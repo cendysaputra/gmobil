@@ -1,0 +1,21 @@
+.button--primary {
+    color: var(--color-text-button-primary);
+    background: var(--color-bg-button-primary);
+    text-transform: uppercase;
+}
+
+.button--primary:hover {
+   color: var(--color-text-button-secondary);
+   background: var(--color-bg-button-secondary);
+}
+
+.button--secondary {
+    color: var(--color-text-button-secondary);
+    background: var(--color-bg-button-secondary);
+    text-transform: uppercase;
+}
+
+.button--secondary:hover {
+   color: var(--color-text-button-primary);
+   background: var(--color-bg-button-primary);
+}

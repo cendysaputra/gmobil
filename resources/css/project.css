@@ -1,0 +1,9 @@
+/* Heading */
+h1, h2 {
+   text-transform: uppercase;
+}
+
+/* Button */
+.button--primary {
+   letter-spacing: 1px;
+}
