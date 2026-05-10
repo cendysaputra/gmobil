@@ -4,7 +4,6 @@ header {
 
 footer {
   background: var(--bg-footer);
-  padding-block: var(--padding-block-footer);
 }
 
 section, .section {

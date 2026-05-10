@@ -1,18 +1,18 @@
 :root {
      /*color*/
-     --color-bg: #ffffff;
+     --color-bg: #FFFFFF;
      --color-surface: #F5F5F5;
      --color-primary: #29A829;
      --color-accent: #29A829;
      --color-secondary: #FFC323;
      --color-heading: #222222;
      --color-text: #444444;
-     --color-muted: #8a847c;
+     --color-line: #E8E8E8;
      --color-border: #E4E4E4;
      --color-link: #29A829;
      --color-focus: #29A829;
      --color-bg-button-primary: #29A829;
-     --color-text-button-primary: #ffffff;
+     --color-text-button-primary: #FFFFFF;
      --color-bg-button-secondary: #FFC323;
      --color-text-button-secondary: #282828;
 

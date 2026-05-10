@@ -1,12 +1,11 @@
 /* Header */
-.header-container {
+.header-container,
+.footer-container {
   width: var(--width-default);
   max-width: var(--width-container-max);
   padding-inline: var(--padding-inline-container);
   margin-inline: auto;
-  margin-top: 24px;
 }
-
 
 /* Heading */
 h1, h2 {
@@ -16,4 +15,16 @@ h1, h2 {
 /* Button */
 .button--primary {
    letter-spacing: 1px;
+}
+
+/* Social Media */
+.social-icon {
+    background-color: var(--color-primary);
+    -webkit-mask: var(--icon-url) no-repeat center / contain;
+    mask: var(--icon-url) no-repeat center / contain;
+    transition: background-color 0.2s;
+}
+
+.social-icon:hover {
+    background-color: var(--color-secondary);
 }
