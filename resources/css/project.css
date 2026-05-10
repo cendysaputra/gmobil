@@ -1,3 +1,13 @@
+/* Header */
+.header-container {
+  width: var(--width-default);
+  max-width: var(--width-container-max);
+  padding-inline: var(--padding-inline-container);
+  margin-inline: auto;
+  margin-top: 24px;
+}
+
+
 /* Heading */
 h1, h2 {
    text-transform: uppercase;

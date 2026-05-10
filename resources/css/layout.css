@@ -1,6 +1,5 @@
 header {
   background: var(--color-bg-header);
-  padding-block: var(--padding-block-header);
 }
 
 footer {
