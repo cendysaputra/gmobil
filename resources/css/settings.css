@@ -199,7 +199,7 @@
     --padding-block-footer: var(--space-7);
 
     /*section*/
-    --padding-block-section: var(--space-8);
+    /* --padding-block-section: var(--space-8); */
 
     /*cluster*/
     --gap-cluster: var(--space-4);

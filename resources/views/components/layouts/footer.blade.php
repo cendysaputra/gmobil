@@ -62,7 +62,7 @@
 @endphp
 
 <footer id="footer">
-    <div class="container py-(--padding-block-container)">
+    <div class="container">
         <div id="footer-menu-wrapper" class="overflow-x-auto border-b border-(--color-line)">
             <ul
                 class="flex min-w-max items-center gap-6 whitespace-nowrap py-8 text-sm lg:min-w-0 lg:justify-between lg:gap-4 text-(--color-text)">

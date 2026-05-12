@@ -1,8 +1,7 @@
 <x-layouts.main>
 
     <main>
-        <section>
-        </section>
+        <x-layouts.slider />
     </main>
 
 </x-layouts.main>
