@@ -50,21 +50,20 @@
     ];
 @endphp
 
-<header id="header">
-    <div class="container">
-        <div id="above-header" class="flex items-center justify-between py-4 lg:py-4">
+<header id="header" class="header-fixed">
+    <div class="container relative z-10">
+        <div id="above-header" class="flex items-center justify-between py-5">
             <div id="logo" class="flex items-center">
                 <a href="/" class="inline-flex items-center">
-                    <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-24" />
+                    <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-32" />
                 </a>
             </div>
 
             <div id="lang" class="hidden lg:flex items-center gap-0.5 text-sm font-(family-name:--font-display)">
                 @foreach ($langs as $lang)
                     <a href="?lang={{ strtolower($lang) }}"
-                        class="text-black w-8 h-8 flex justify-center items-center transition-colors
-                        {{ strtolower($activeLang) === strtolower($lang) ? '' : 'hover:bg-(--color-secondary)' }}"
-                        style="{{ strtolower($activeLang) === strtolower($lang) ? 'background-color: var(--color-bg-button-secondary);' : '' }}">
+                        class="flex h-9 min-w-9 items-center justify-center px-2 leading-none transition-colors hover:bg-(--color-secondary) hover:text-(--color-text-button-secondary)
+                        {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-secondary) text-(--color-text-button-secondary)' : 'text-white' }}">
                         {{ $lang }}
                     </a>
                 @endforeach
@@ -73,17 +72,17 @@
             <!-- Button Flyout -->
             <button id="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false"
                 class="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1">
-                <span class="block w-6 h-0.5 bg-black"></span>
-                <span class="block w-6 h-0.5 bg-black"></span>
-                <span class="block w-6 h-0.5 bg-black"></span>
+                <span class="block w-6 h-0.5 bg-white"></span>
+                <span class="block w-6 h-0.5 bg-white"></span>
+                <span class="block w-6 h-0.5 bg-white"></span>
             </button>
         </div>
 
-        <nav id="bellow-header" class="relative border-t border-(--color-line) py-3">
-            <ul class="hidden lg:flex items-center justify-between gap-6 text-black text-sm font-medium">
+        <nav id="bellow-header" class="relative border-t border-(--color-line)/20 py-5">
+            <ul class="hidden lg:flex items-center justify-between gap-6 text-(--font-body) font-medium">
                 @foreach ($menus as $menu)
                     <li>
-                        <a href="{{ $menu['menu_link'] }}" class="text-black hover:text-(--color-primary)">
+                        <a href="{{ $menu['menu_link'] }}" class="text-white hover:text-(--color-primary)">
                             {{ $menu['menu_text'] }}
                         </a>
                     </li>
@@ -130,9 +129,8 @@
                             <div class="flex items-center gap-2 text-sm font-(family-name:--font-display)">
                                 @foreach ($langs as $lang)
                                     <a href="?lang={{ strtolower($lang) }}"
-                                        class="text-black min-w-10 h-10 px-3 flex justify-center items-center transition-colors border border-(--color-line)
-                                        {{ strtolower($activeLang) === strtolower($lang) ? '' : 'hover:bg-(--color-secondary)' }}"
-                                        style="{{ strtolower($activeLang) === strtolower($lang) ? 'background-color: var(--color-bg-button-secondary);' : '' }}">
+                                        class="flex h-10 min-w-10 items-center justify-center border border-(--color-line) px-3 leading-none text-black transition-colors hover:bg-(--color-secondary) hover:text-(--color-text-button-secondary)
+                                        {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-secondary) text-(--color-text-button-secondary)' : '' }}">
                                         {{ $lang }}
                                     </a>
                                 @endforeach
