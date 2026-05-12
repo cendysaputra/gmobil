@@ -2,6 +2,10 @@
     $logo_url = asset('images/gm-logo.png');
     $langs = ['ID', 'EN'];
     $activeLang = request('lang', 'id');
+    $contact = [
+        'phone' => '1500-329',
+        'email' => 'gmmcare@gmmobil.com',
+    ];
     $menus = [
         [
             'menu_text' => 'Beranda',
@@ -48,14 +52,14 @@
 
 <header id="header">
     <div class="container">
-        <div class="flex items-center justify-between lg:py-4">
-            <div class="flex items-center">
+        <div id="above-header" class="flex items-center justify-between py-4 lg:py-4">
+            <div id="logo" class="flex items-center">
                 <a href="/" class="inline-flex items-center">
                     <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-24" />
                 </a>
             </div>
 
-            <div class="flex items-center gap-0.5 text-black text-sm font-(family-name:--font-display)">
+            <div id="lang" class="hidden lg:flex items-center gap-0.5 text-sm font-(family-name:--font-display)">
                 @foreach ($langs as $lang)
                     <a href="?lang={{ strtolower($lang) }}"
                         class="text-black w-8 h-8 flex justify-center items-center transition-colors
@@ -65,9 +69,17 @@
                     </a>
                 @endforeach
             </div>
+
+            <!-- Button Flyout -->
+            <button id="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false"
+                class="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1">
+                <span class="block w-6 h-0.5 bg-black"></span>
+                <span class="block w-6 h-0.5 bg-black"></span>
+                <span class="block w-6 h-0.5 bg-black"></span>
+            </button>
         </div>
 
-        <nav class="relative border-t border-(--color-line) py-3">
+        <nav id="bellow-header" class="relative border-t border-(--color-line) py-3">
             <ul class="hidden lg:flex items-center justify-between gap-6 text-black text-sm font-medium">
                 @foreach ($menus as $menu)
                     <li>
@@ -77,37 +89,137 @@
                     </li>
                 @endforeach
             </ul>
-            <!-- Flyout Menu -->
-            <button id="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false"
-                class="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1">
-                <span class="block w-6 h-0.5 bg-black"></span>
-                <span class="block w-6 h-0.5 bg-black"></span>
-                <span class="block w-6 h-0.5 bg-black"></span>
-            </button>
+
             <!-- Mobile/Tablet Menu -->
             <div id="mobile-menu"
-                class="hidden lg:hidden absolute top-full left-0 w-full bg-white border-t border-black/10 shadow-lg z-50">
-                <ul class="flex flex-col text-black text-sm font-medium">
-                    @foreach ($menus as $menu)
-                        <li class="border-b border-black/10 last:border-b-0">
-                            <a href="{{ $menu['menu_link'] }}"
-                                class="block px-4 py-3 hover:bg-slate-50 hover:text-(--color-primary)">
-                                {{ $menu['menu_text'] }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
+                class="pointer-events-none invisible opacity-0 lg:hidden fixed inset-0 z-50 transition-opacity duration-300 ease-out">
+                <button type="button" id="mobile-menu-backdrop" aria-label="Close menu"
+                    class="absolute inset-0 bg-black/45 opacity-0 transition-opacity duration-300 ease-out"></button>
+
+                <div id="mobile-menu-panel"
+                    class="-translate-x-full relative flex h-full w-full max-w-[90%] flex-col bg-white px-4 py-4 transition-transform duration-300 ease-out">
+                    <div class="flex items-start justify-between pb-8">
+                        <a href="/" class="inline-flex items-center">
+                            <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-24" />
+                        </a>
+
+                        <button type="button" id="mobile-menu-close" aria-label="Close menu"
+                            class="flex h-8 w-8 items-center justify-center text-3xl text-black">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div id="menu-flyout" class="border-t border-(--color-line) py-8">
+                        <ul class="flex  flex-col gap-4 font-(family-name:--font-body)">
+                            @foreach ($menus as $menu)
+                                <li>
+                                    <a href="{{ $menu['menu_link'] }}"
+                                        class="text-black block hover:text-(--color-primary)">
+                                        {{ $menu['menu_text'] }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <div class="mt-auto border-t border-(--color-line) py-6">
+                        <div class="pb-6 flex items-center justify-between">
+                            <div class="text-black font-(family-name:--font-body) uppercase">Pilih
+                                Bahasa
+                            </div>
+                            <div class="flex items-center gap-2 text-sm font-(family-name:--font-display)">
+                                @foreach ($langs as $lang)
+                                    <a href="?lang={{ strtolower($lang) }}"
+                                        class="text-black min-w-10 h-10 px-3 flex justify-center items-center transition-colors border border-(--color-line)
+                                        {{ strtolower($activeLang) === strtolower($lang) ? '' : 'hover:bg-(--color-secondary)' }}"
+                                        style="{{ strtolower($activeLang) === strtolower($lang) ? 'background-color: var(--color-bg-button-secondary);' : '' }}">
+                                        {{ $lang }}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div id="contact-flyout" class="border-t border-(--color-line) py-8 flex flex-col gap-2">
+                            <div class=" text-black font-(family-name:--font-body)">
+                                <p class="uppercase text-(--color-primary) mb-2">Telepon</p>
+                                <a href="tel:{{ preg_replace('/\s+/', '', $contact['phone']) }}"
+                                    class="text-black text-[1.3em] hover:text-(--color-primary) font-(family-name:--font-body)">
+                                    {{ $contact['phone'] }}
+                                </a>
+                            </div>
+                            <div class="mt-4  text-black font-(family-name:--font-body)">
+                                <p class="uppercase text-(--color-primary) mb-2">Email</p>
+                                <a href="mailto:{{ $contact['email'] }}"
+                                    class="text-black text-[1.3em] hover:text-(--color-primary) font-(family-name:--font-body)">
+                                    {{ $contact['email'] }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     </div>
 </header>
 
 <script>
-    document.getElementById('menu-toggle').addEventListener('click', function() {
+    (() => {
+        const toggleButton = document.getElementById('menu-toggle');
+        const closeButton = document.getElementById('mobile-menu-close');
+        const backdropButton = document.getElementById('mobile-menu-backdrop');
         const menu = document.getElementById('mobile-menu');
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        const menuPanel = document.getElementById('mobile-menu-panel');
+        let closeTimer = null;
 
-        menu.classList.toggle('hidden');
-        this.setAttribute('aria-expanded', String(!isExpanded));
-    });
+        if (!toggleButton || !menu || !menuPanel || !backdropButton) {
+            return;
+        }
+
+        const setMenuState = (isOpen) => {
+            toggleButton.setAttribute('aria-expanded', String(isOpen));
+
+            if (closeTimer) {
+                window.clearTimeout(closeTimer);
+                closeTimer = null;
+            }
+
+            if (isOpen) {
+                menu.classList.remove('pointer-events-none', 'invisible', 'opacity-0');
+                menu.classList.add('pointer-events-auto', 'visible', 'opacity-100');
+                backdropButton.classList.remove('opacity-0');
+                backdropButton.classList.add('opacity-100');
+                menuPanel.classList.remove('-translate-x-full');
+                menuPanel.classList.add('translate-x-0');
+                document.body.classList.add('overflow-hidden');
+                return;
+            }
+
+            menu.classList.remove('pointer-events-auto', 'visible', 'opacity-100');
+            menu.classList.add('opacity-0');
+            backdropButton.classList.remove('opacity-100');
+            backdropButton.classList.add('opacity-0');
+            menuPanel.classList.remove('translate-x-0');
+            menuPanel.classList.add('-translate-x-full');
+            document.body.classList.remove('overflow-hidden');
+
+            closeTimer = window.setTimeout(() => {
+                menu.classList.add('pointer-events-none', 'invisible');
+                closeTimer = null;
+            }, 300);
+        };
+
+        toggleButton.addEventListener('click', () => {
+            const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+            setMenuState(!isExpanded);
+        });
+
+        closeButton?.addEventListener('click', () => setMenuState(false));
+        backdropButton?.addEventListener('click', () => setMenuState(false));
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                setMenuState(false);
+            }
+        });
+    })();
 </script>
