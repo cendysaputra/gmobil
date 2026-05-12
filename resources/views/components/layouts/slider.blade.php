@@ -2,9 +2,9 @@
     $SlidesHome = [
         [
             'slide' => [
-                'background' => Storage::url('images/hero-slide1.jpg'),
+                'background' => asset('images/hero-slide1.jpg'),
                 'backgroundVideo' => '',
-                'title' => 'Kepastian Operasional untuk Bisnis Anda',
+                'title' => 'Kepastian Operasional untuk Bisnis Anda 1',
                 'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
                 'btnText' => 'Mulai Konsultasi',
                 'btnLink' => '/kontak',
@@ -12,9 +12,9 @@
         ],
         [
             'slide' => [
-                'background' => Storage::url('images/hero-slide2.jpg'),
+                'background' => asset('images/hero-slide2.jpg'),
                 'backgroundVideo' => '',
-                'title' => 'Kepastian Operasional untuk Bisnis Anda',
+                'title' => 'Kepastian Operasional untuk Bisnis Anda 2',
                 'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
                 'btnText' => 'Mulai Konsultasi',
                 'btnLink' => '/kontak',
@@ -22,9 +22,9 @@
         ],
         [
             'slide' => [
-                'background' => Storage::url('images/hero-slide1.jpg'),
+                'background' => asset('images/hero-slide1.jpg'),
                 'backgroundVideo' => '',
-                'title' => 'Kepastian Operasional untuk Bisnis Anda',
+                'title' => 'Kepastian Operasional untuk Bisnis Anda 3',
                 'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
                 'btnText' => 'Mulai Konsultasi',
                 'btnLink' => '/kontak',
@@ -54,31 +54,34 @@
                     class="{{ $isActive ? 'relative opacity-100' : 'pointer-events-none absolute inset-0 opacity-0' }} transition-opacity duration-500 ease-out">
                     <div class="relative overflow-hidden bg-slate-900"
                         style="min-height: {{ $mobileHeight }}; --slider-height-tablet: {{ $tabletHeight }}; --slider-height-desktop: {{ $desktopHeight }};">
-                        <div class="absolute inset-0 bg-cover bg-center"
-                            style="background-image: url('{{ $slide['background'] }}');"></div>
-                        <div class="absolute inset-0 bg-black/45"></div>
-
                         @if (!empty($slide['backgroundVideo']))
                             <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline>
                                 <source src="{{ $slide['backgroundVideo'] }}" type="video/mp4">
                             </video>
+                        @else
+                            <img src="{{ $slide['background'] }}" alt="{{ $slide['title'] }}"
+                                class="absolute inset-0 h-full w-full object-cover" />
                         @endif
 
-                        <div
-                            class="container relative z-10 flex items-end py-16 [min-height:inherit] md:[min-height:var(--slider-height-tablet)] lg:[min-height:var(--slider-height-desktop)]">
-                            <div class="max-w-2xl text-white">
-                                <h1
-                                    class="text-4xl leading-tight font-(family-name:--font-display) text-white md:text-5xl lg:text-6xl">
-                                    {{ $slide['title'] }}
-                                </h1>
-                                <p class="mt-4 max-w-xl text-white/85">
-                                    {{ $slide['desc'] }}
-                                </p>
-                                <div class="mt-8">
-                                    <a href="{{ $slide['btnLink'] }}"
-                                        class="inline-flex items-center justify-center bg-(--color-bg-button-secondary) px-6 py-3 font-(family-name:--font-display) text-sm font-semibold text-(--color-text-button-secondary) transition-colors hover:bg-(--color-primary) hover:text-white">
-                                        {{ $slide['btnText'] }}
-                                    </a>
+                        <div class="hero-banner-overlay absolute inset-0"></div>
+
+                        <div class="absolute inset-0 z-10">
+                            <div
+                                class="container flex h-full items-end py-16 [min-height:inherit] md:[min-height:var(--slider-height-tablet)] lg:[min-height:var(--slider-height-desktop)]">
+                                <div class="max-w-2xl text-white">
+                                    <h1
+                                        class="text-4xl leading-tight font-(family-name:--font-display) text-white md:text-5xl lg:text-6xl">
+                                        {{ $slide['title'] }}
+                                    </h1>
+                                    <p class="mt-4 max-w-xl text-white/85">
+                                        {{ $slide['desc'] }}
+                                    </p>
+                                    <div class="mt-8">
+                                        <a href="{{ $slide['btnLink'] }}"
+                                            class="inline-flex items-center justify-center bg-(--color-bg-button-secondary) px-6 py-3 font-(family-name:--font-display) text-sm font-semibold text-(--color-text-button-secondary) transition-colors hover:bg-(--color-primary) hover:text-white">
+                                            {{ $slide['btnText'] }}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

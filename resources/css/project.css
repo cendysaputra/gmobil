@@ -28,3 +28,13 @@ h1, h2 {
 .social-icon:hover {
     background-color: var(--color-secondary);
 }
+
+/* Hero Banner */
+.hero-banner-overlay {
+    background: radial-gradient(
+        72.36% 100% at 50% 0%,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.7) 57.08%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+}
