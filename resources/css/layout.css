@@ -11,10 +11,7 @@ section, .section {
 }
 
 .container {
-  width: var(--width-default);
   max-width: var(--width-container-max);
-  padding-block: var(--padding-block-container);
-  padding-inline: var(--padding-inline-container);
   margin-inline: auto;
 }
 

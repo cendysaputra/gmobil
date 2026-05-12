@@ -62,8 +62,8 @@
 @endphp
 
 <footer id="footer">
-    <div class="footer-container">
-        <div>
+    <div class="container py-(--padding-block-container)">
+        <div id="footer-menu-wrapper">
             <ul class="flex items-center justify-between text-sm py-8 border-b border-(--color-line)">
                 @foreach ($menus as $menu)
                     <li>
@@ -74,9 +74,10 @@
                 @endforeach
             </ul>
         </div>
-        <div class="flex gap-4 items-center justify-between text-sm py-8">
+        <div id="footer-copyright" class="flex gap-4 items-center justify-between text-sm py-8">
             <div class="text-black">© {{ date('Y') }} {{ $company_name }}</div>
-            <div class="flex items-center gap-4 text-black text-sm font-(family-name:--font-display)">
+            <div id="social-icons-wrapper"
+                class="flex items-center gap-4 text-black text-sm font-(family-name:--font-display)">
                 @foreach ($socials as $social)
                     <a href="{{ $social['link'] }}" target="_blank" rel="noopener noreferrer"
                         title="{{ $social['name'] }}">

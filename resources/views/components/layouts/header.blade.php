@@ -47,11 +47,11 @@
 @endphp
 
 <header id="header">
-    <div class="header-container relative">
+    <div class="container">
         <div class="flex items-center justify-between lg:py-4">
             <div class="flex items-center">
                 <a href="/" class="inline-flex items-center">
-                    <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-12 w-auto" />
+                    <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-24" />
                 </a>
             </div>
 
@@ -67,26 +67,25 @@
             </div>
         </div>
 
-        <div class="border-t border-(--color-line) py-3">
-            <nav>
-                <ul class="hidden lg:flex items-center justify-between gap-6 text-black text-sm font-medium">
-                    @foreach ($menus as $menu)
-                        <li>
-                            <a href="{{ $menu['menu_link'] }}" class="text-black hover:text-(--color-primary)">
-                                {{ $menu['menu_text'] }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-                <!-- Hamburger Menu -->
-                <button class="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1">
-                    <span class="block w-6 h-0.5 bg-black"></span>
-                    <span class="block w-6 h-0.5 bg-black"></span>
-                    <span class="block w-6 h-0.5 bg-black"></span>
-                </button>
-            </nav>
+        <nav class="relative border-t border-(--color-line) py-3">
+            <ul class="hidden lg:flex items-center justify-between gap-6 text-black text-sm font-medium">
+                @foreach ($menus as $menu)
+                    <li>
+                        <a href="{{ $menu['menu_link'] }}" class="text-black hover:text-(--color-primary)">
+                            {{ $menu['menu_text'] }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+            <!-- Flyout Menu -->
+            <button id="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false"
+                class="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1">
+                <span class="block w-6 h-0.5 bg-black"></span>
+                <span class="block w-6 h-0.5 bg-black"></span>
+                <span class="block w-6 h-0.5 bg-black"></span>
+            </button>
             <!-- Mobile/Tablet Menu -->
-            <div
+            <div id="mobile-menu"
                 class="hidden lg:hidden absolute top-full left-0 w-full bg-white border-t border-black/10 shadow-lg z-50">
                 <ul class="flex flex-col text-black text-sm font-medium">
                     @foreach ($menus as $menu)
@@ -99,13 +98,16 @@
                     @endforeach
                 </ul>
             </div>
-        </div>
+        </nav>
     </div>
 </header>
 
 <script>
     document.getElementById('menu-toggle').addEventListener('click', function() {
         const menu = document.getElementById('mobile-menu');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
         menu.classList.toggle('hidden');
+        this.setAttribute('aria-expanded', String(!isExpanded));
     });
 </script>
