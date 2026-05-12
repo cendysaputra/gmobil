@@ -63,10 +63,11 @@
 
 <footer id="footer">
     <div class="container py-(--padding-block-container)">
-        <div id="footer-menu-wrapper">
-            <ul class="flex items-center justify-between text-sm py-8 border-b border-(--color-line)">
+        <div id="footer-menu-wrapper" class="overflow-x-auto border-b border-(--color-line)">
+            <ul
+                class="flex min-w-max items-center gap-6 whitespace-nowrap py-8 text-sm lg:min-w-0 lg:justify-between lg:gap-4 text-(--color-text)">
                 @foreach ($menus as $menu)
-                    <li>
+                    <li class="shrink-0">
                         <a href="{{ $menu['menu_link'] }}" class="text-black hover:text-(--color-primary)">
                             {{ $menu['menu_text'] }}
                         </a>
@@ -75,9 +76,8 @@
             </ul>
         </div>
         <div id="footer-copyright" class="flex gap-4 items-center justify-between text-sm py-8">
-            <div class="text-black">© {{ date('Y') }} {{ $company_name }}</div>
-            <div id="social-icons-wrapper"
-                class="flex items-center gap-4 text-black text-sm font-(family-name:--font-display)">
+            <p class="text-(--color-text) text-sm">© {{ date('Y') }} {{ $company_name }}</p>
+            <div id="social-icons-wrapper" class="flex items-center gap-4">
                 @foreach ($socials as $social)
                     <a href="{{ $social['link'] }}" target="_blank" rel="noopener noreferrer"
                         title="{{ $social['name'] }}">

@@ -97,9 +97,9 @@
     /*p*/
     --font-p: var(--font-body);
     --weight-p: var(--weight-regular);
-    --text-p: var(--text-md);
-    --text-p-tablet: var(--text-base);
-    --text-p-mobile: var(--text-base);
+    --text-p: 1rem;
+    --text-p-tablet: 14px;
+    --text-p-mobile: 14px;
     --leading-p: var(--leading-relaxed);
     --tracking-p: var(--tracking-normal);
     --transform-p: none;
