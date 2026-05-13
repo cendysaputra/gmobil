@@ -4,7 +4,7 @@
             'slide' => [
                 'background' => asset('images/hero-slide1.jpg'),
                 'backgroundVideo' => '',
-                'title' => 'Kepastian Operasional untuk Bisnis Anda 1',
+                'title' => 'Kepastian Operasional untuk Bisnis Anda',
                 'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
                 'btnText' => 'Mulai Konsultasi',
                 'btnLink' => '/kontak',
@@ -14,7 +14,7 @@
             'slide' => [
                 'background' => asset('images/hero-slide2.jpg'),
                 'backgroundVideo' => '',
-                'title' => 'Kepastian Operasional untuk Bisnis Anda 2',
+                'title' => 'Kepastian Operasional untuk Bisnis Anda',
                 'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
                 'btnText' => 'Mulai Konsultasi',
                 'btnLink' => '/kontak',
@@ -24,7 +24,7 @@
             'slide' => [
                 'background' => asset('images/hero-slide1.jpg'),
                 'backgroundVideo' => '',
-                'title' => 'Kepastian Operasional untuk Bisnis Anda 3',
+                'title' => 'Kepastian Operasional untuk Bisnis Anda',
                 'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
                 'btnText' => 'Mulai Konsultasi',
                 'btnLink' => '/kontak',
@@ -39,59 +39,78 @@
     ];
 @endphp
 
-<section id="hero-banner" class="relative overflow-hidden">
-    <div class="relative" data-hero-slider>
-        <div class="relative">
-            @foreach ($SlidesHome as $item)
-                @php
-                    $slide = $item['slide'];
-                    $desktopHeight = $sliderHeight['heightDesktop']['value'] . $sliderHeight['heightDesktop']['unit'];
-                    $tabletHeight = $sliderHeight['heightTablet']['value'] . $sliderHeight['heightTablet']['unit'];
-                    $mobileHeight = $sliderHeight['heightMobile']['value'] . $sliderHeight['heightMobile']['unit'];
-                    $isActive = $loop->first;
-                @endphp
-                <div data-hero-slide
-                    class="{{ $isActive ? 'relative opacity-100' : 'pointer-events-none absolute inset-0 opacity-0' }} transition-opacity duration-500 ease-out">
-                    <div class="relative overflow-hidden bg-slate-900"
-                        style="min-height: {{ $mobileHeight }}; --slider-height-tablet: {{ $tabletHeight }}; --slider-height-desktop: {{ $desktopHeight }};">
-                        @if (!empty($slide['backgroundVideo']))
-                            <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline>
-                                <source src="{{ $slide['backgroundVideo'] }}" type="video/mp4">
-                            </video>
-                        @else
-                            <img src="{{ $slide['background'] }}" alt="{{ $slide['title'] }}"
-                                class="absolute inset-0 h-full w-full object-cover" />
-                        @endif
+{{-- Hero Slider --}}
+<section id="hero-banner" class="overflow-hidden">
+    <div data-hero-slider class="relative">
 
-                        <div class="hero-banner-overlay absolute inset-0"></div>
+        {{-- Slider Track --}}
+        <div class="overflow-hidden">
+            <div data-hero-track class="flex transition-transform duration-500 ease-out">
 
-                        <div class="absolute inset-0 z-10">
-                            <div
-                                class="container flex h-full items-end py-16 [min-height:inherit] md:[min-height:var(--slider-height-tablet)] lg:[min-height:var(--slider-height-desktop)]">
-                                <div class="max-w-2xl text-white">
-                                    <h1
-                                        class="text-4xl leading-tight font-(family-name:--font-display) text-white md:text-5xl lg:text-6xl">
-                                        {{ $slide['title'] }}
-                                    </h1>
-                                    <p class="mt-4 max-w-xl text-white/85">
-                                        {{ $slide['desc'] }}
-                                    </p>
-                                    <div class="mt-8">
-                                        <a href="{{ $slide['btnLink'] }}"
-                                            class="inline-flex items-center justify-center bg-(--color-bg-button-secondary) px-6 py-3 font-(family-name:--font-display) text-sm font-semibold text-(--color-text-button-secondary) transition-colors hover:bg-(--color-primary) hover:text-white">
-                                            {{ $slide['btnText'] }}
-                                        </a>
+                {{-- Loop tiap slide --}}
+                @foreach ($SlidesHome as $item)
+                    @php
+                        $slide = $item['slide'];
+                        $desktopHeight =
+                            $sliderHeight['heightDesktop']['value'] . $sliderHeight['heightDesktop']['unit'];
+                        $tabletHeight = $sliderHeight['heightTablet']['value'] . $sliderHeight['heightTablet']['unit'];
+                        $mobileHeight = $sliderHeight['heightMobile']['value'] . $sliderHeight['heightMobile']['unit'];
+                    @endphp
+
+                    {{-- Slide wrapper --}}
+                    <div data-hero-slide class="relative min-w-full">
+                        <div class="relative overflow-hidden bg-slate-900"
+                            style="min-height: {{ $mobileHeight }}; --slider-height-tablet: {{ $tabletHeight }}; --slider-height-desktop: {{ $desktopHeight }};">
+
+                            {{-- Background video/image --}}
+                            @if (!empty($slide['backgroundVideo']))
+                                <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop
+                                    playsinline>
+                                    <source src="{{ $slide['backgroundVideo'] }}" type="video/mp4">
+                                </video>
+                            @else
+                                <img src="{{ $slide['background'] }}" alt="{{ $slide['title'] }}"
+                                    class="absolute inset-0 h-full w-full object-cover" />
+                            @endif
+
+                            {{-- Overlay --}}
+                            <div class="hero-banner-overlay absolute inset-0"></div>
+
+                            {{-- Konten Slider --}}
+                            <div id="content-hero" class="absolute inset-0 z-10">
+                                <div
+                                    class="container flex justify-center items-center min-h-[inherit] md:min-h-(--slider-height-tablet) lg:min-h-(--slider-height-desktop)">
+                                    <div class="max-w-2xl">
+
+                                        <h1 class="text-white md:text-5xl lg:text-6xl">
+                                            {{ $slide['title'] }}
+                                        </h1>
+
+                                        <p class="mt-4 max-w-xl text-white/85">
+                                            {{ $slide['desc'] }}
+                                        </p>
+
+                                        <div class="mt-8">
+                                            <a href="{{ $slide['btnLink'] }}"
+                                                class="inline-flex items-center justify-center bg-(--color-bg-button-secondary) px-6 py-3 font-(family-name:--font-display) text-sm font-semibold text-(--color-text-button-secondary) transition-colors hover:bg-(--color-primary) hover:text-white">
+                                                {{ $slide['btnText'] }}
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+
+            </div>
         </div>
 
+        {{-- Navigasi Dots --}}
         <div class="pointer-events-none absolute inset-x-0 bottom-6 z-10 flex justify-center">
-            <div class="pointer-events-auto flex items-center justify-center gap-2">
+            <div class="pointer-events-auto flex items-center gap-2">
                 @foreach ($SlidesHome as $item)
                     <button type="button" data-hero-dot
                         class="{{ $loop->first ? 'w-6 bg-white' : 'w-2 bg-white/50' }} h-2 rounded-full transition-all duration-300 ease-out"
@@ -100,5 +119,6 @@
                 @endforeach
             </div>
         </div>
+
     </div>
 </section>
