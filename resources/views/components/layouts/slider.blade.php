@@ -58,7 +58,7 @@
                     @endphp
 
                     {{-- Slide wrapper --}}
-                    <div data-hero-slide class="relative min-w-full">
+                    <div id="hero-background-slider" data-hero-slide class="min-w-full">
                         <div class="relative overflow-hidden bg-slate-900"
                             style="min-height: {{ $mobileHeight }}; --slider-height-tablet: {{ $tabletHeight }}; --slider-height-desktop: {{ $desktopHeight }};">
 
@@ -80,22 +80,20 @@
                             <div id="content-hero" class="absolute inset-0 z-10">
                                 <div
                                     class="container flex justify-center items-center min-h-[inherit] md:min-h-(--slider-height-tablet) lg:min-h-(--slider-height-desktop)">
-                                    <div class="max-w-2xl">
+                                    <div class="lg:w-200 text-center">
 
-                                        <h1 class="text-white md:text-5xl lg:text-6xl">
+                                        <h1 class="text-white max-w-none">
                                             {{ $slide['title'] }}
                                         </h1>
 
-                                        <p class="mt-4 max-w-xl text-white/85">
+                                        <p class="mt-4 text-white max-w-none">
                                             {{ $slide['desc'] }}
                                         </p>
 
-                                        <div class="mt-8">
-                                            <a href="{{ $slide['btnLink'] }}"
-                                                class="inline-flex items-center justify-center bg-(--color-bg-button-secondary) px-6 py-3 font-(family-name:--font-display) text-sm font-semibold text-(--color-text-button-secondary) transition-colors hover:bg-(--color-primary) hover:text-white">
-                                                {{ $slide['btnText'] }}
-                                            </a>
-                                        </div>
+                                        <button href="{{ $slide['btnLink'] }}"
+                                            class="button-secondary mt-8 bg-(--color-bg-button-secondary) text-(--color-text-button-secondary) hover:bg-(--color-primary) hover:text-white">
+                                            {{ $slide['btnText'] }}
+                                        </button>
 
                                     </div>
                                 </div>

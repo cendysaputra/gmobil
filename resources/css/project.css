@@ -1,23 +1,29 @@
-/* Header */
-.header-container,
-.footer-container {
-  width: var(--width-default);
-  max-width: var(--width-container-max);
-  padding-inline: var(--padding-inline-container);
-  margin-inline: auto;
-}
-
-/* Heading */
+/* Heading Uppercase */
 h1, h2 {
    text-transform: uppercase;
 }
 
-/* Button */
-.button--primary {
-   letter-spacing: 1px;
+/* Button Global */
+.button-primary,
+.button-secondary {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   text-transform: uppercase;
+   letter-spacing: 2px;
+   font-family: var(--font-button);
+   font-size: var(--text-button);
+   font-weight: var(--weight-button);
+   line-height: 1;
+   border-radius: var(--radius-button);
+   padding-inline: var(--padding-inline-button);
+   padding-block-start: 1rem;
+   padding-block-end: 0.75rem;
+   transition: background-color 0.2s, color 0.2s;
+   cursor: pointer;
 }
 
-/* Social Media */
+/* Social Media Icons */
 .social-icon {
     background-color: var(--color-primary);
     -webkit-mask: var(--icon-url) no-repeat center / contain;
@@ -29,7 +35,7 @@ h1, h2 {
     background-color: var(--color-secondary);
 }
 
-/* Hero Banner */
+/* Hero Banner Overlay Home */
 .hero-banner-overlay {
     background: radial-gradient(
         72.36% 100% at 50% 0%,
