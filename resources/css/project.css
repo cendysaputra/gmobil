@@ -3,6 +3,7 @@ h1, h2 {
    text-transform: uppercase;
 }
 
+
 /* Button Global */
 .button-primary,
 .button-secondary {
@@ -23,6 +24,7 @@ h1, h2 {
    cursor: pointer;
 }
 
+
 /* Social Media Icons */
 .social-icon {
     background-color: var(--color-primary);
@@ -35,6 +37,7 @@ h1, h2 {
     background-color: var(--color-secondary);
 }
 
+
 /* Hero Banner Overlay Home */
 .hero-banner-overlay {
     background: radial-gradient(
@@ -43,4 +46,42 @@ h1, h2 {
         rgba(0, 0, 0, 0.7) 57.08%,
         rgba(0, 0, 0, 0.2) 100%
     );
+}
+
+
+/* Dot Slider Hero Banner*/
+.hero-slider-dot {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.35);
+    transition-property: background-color, opacity;
+    transition-duration: var(--hero-slider-transition-duration, 500ms);
+    transition-timing-function: ease-out;
+}
+
+.hero-slider-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+.hero-slider-dot.is-active::after {
+    animation: hero-slider-dot-progress var(--hero-slider-autoplay-duration, 5000ms) linear forwards;
+}
+
+[data-hero-slider].is-autoplay-paused .hero-slider-dot.is-active::after {
+    animation-play-state: paused;
+}
+
+@keyframes hero-slider-dot-progress {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
 }

@@ -1,4 +1,6 @@
 const setupHeroSlider = () => {
+    const SLIDE_TRANSITION_MS = 500;
+    const AUTOPLAY_DELAY_MS = 5000;
     const slider = document.querySelector('[data-hero-slider]');
 
     if (!slider) return;
@@ -31,13 +33,25 @@ const setupHeroSlider = () => {
     let sliderWidth = 0;
     let resizeTimeoutId = null;
 
+    slider.style.setProperty('--hero-slider-transition-duration', `${SLIDE_TRANSITION_MS}ms`);
+    slider.style.setProperty('--hero-slider-autoplay-duration', `${AUTOPLAY_DELAY_MS}ms`);
+
     const getTranslateForIndex = (index) => -(index * sliderWidth);
+
+    const restartActiveDotProgress = () => {
+        const activeDot = dots[activeIndex];
+
+        if (!activeDot) return;
+
+        activeDot.classList.remove('is-active');
+        void activeDot.offsetWidth;
+        activeDot.classList.add('is-active');
+    };
 
     const updateDots = () => {
         dots.forEach((dot, index) => {
             const isActive = index === activeIndex;
-            dot.classList.toggle('bg-white', isActive);
-            dot.classList.toggle('bg-white/40', !isActive);
+            dot.classList.toggle('is-active', isActive);
             dot.setAttribute('aria-current', String(isActive));
         });
     };
@@ -69,27 +83,38 @@ const setupHeroSlider = () => {
             activeIndex = currentIndex - 1;
         }
 
-        currentTranslate = getTranslateForIndex(currentIndex);
+        const nextTranslate = getTranslateForIndex(currentIndex);
+        const shouldAnimate = animate && nextTranslate !== currentTranslate;
+
+        currentTranslate = nextTranslate;
         previousTranslate = currentTranslate;
-        isAnimating = animate;
-        setTrackPosition(currentTranslate, animate);
+        isAnimating = shouldAnimate;
+        setTrackPosition(currentTranslate, shouldAnimate);
         updateDots();
+
+        if (!shouldAnimate) {
+            startAutoplay();
+        }
     };
 
     const stopAutoplay = () => {
         if (autoplayId) {
-            window.clearInterval(autoplayId);
+            window.clearTimeout(autoplayId);
             autoplayId = null;
         }
+
+        slider.classList.add('is-autoplay-paused');
     };
 
     const startAutoplay = () => {
         stopAutoplay();
-        autoplayId = window.setInterval(() => {
+        slider.classList.remove('is-autoplay-paused');
+        restartActiveDotProgress();
+        autoplayId = window.setTimeout(() => {
             if (!isDragging && !isAnimating) {
                 renderTrackIndex(currentIndex + 1);
             }
-        }, 5000);
+        }, AUTOPLAY_DELAY_MS);
     };
 
     const resetDragState = () => {
@@ -137,15 +162,18 @@ const setupHeroSlider = () => {
     };
 
     dots.forEach((dot, index) => {
+        dot.addEventListener('pointerdown', (event) => {
+            event.stopPropagation();
+        });
+
         dot.addEventListener('click', () => {
-            if (isDragging || isAnimating) return;
+            if (isDragging) return;
             renderTrackIndex(index + 1);
-            startAutoplay();
         });
     });
 
     slider.addEventListener('pointerdown', (event) => {
-        if (event.button !== 0 || isAnimating) return;
+        if (event.button !== 0 || isAnimating || event.target.closest('[data-hero-dot]')) return;
 
         syncDimensions();
         isDragging = true;
@@ -178,13 +206,6 @@ const setupHeroSlider = () => {
         handleDragEnd();
     });
 
-    slider.addEventListener('mouseenter', stopAutoplay);
-    slider.addEventListener('mouseleave', () => {
-        if (!isDragging) {
-            startAutoplay();
-        }
-    });
-
     slider.addEventListener('dragstart', (event) => {
         event.preventDefault();
     });
@@ -198,6 +219,7 @@ const setupHeroSlider = () => {
             activeIndex = totalSlides - 1;
             jumpToIndex(totalSlides);
             updateDots();
+            startAutoplay();
             return;
         }
 
@@ -205,7 +227,11 @@ const setupHeroSlider = () => {
             activeIndex = 0;
             jumpToIndex(1);
             updateDots();
+            startAutoplay();
+            return;
         }
+
+        startAutoplay();
     });
 
     window.addEventListener('resize', () => {
