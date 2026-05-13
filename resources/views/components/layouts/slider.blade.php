@@ -41,7 +41,7 @@
 
 {{-- Hero Slider --}}
 <section id="hero-banner" class="overflow-hidden">
-    <div data-hero-slider class="relative">
+    <div data-hero-slider class="relative select-none touch-pan-y">
 
         {{-- Slider Track --}}
         <div class="overflow-hidden">
@@ -107,11 +107,11 @@
         </div>
 
         {{-- Navigasi Dots --}}
-        <div class="pointer-events-none absolute inset-x-0 bottom-6 z-10 flex justify-center">
-            <div class="pointer-events-auto flex items-center gap-2">
+        <div class="pointer-events-none absolute inset-x-0 bottom-6 z-10 px-6 sm:px-8 lg:px-10">
+            <div class="pointer-events-auto flex w-full items-center gap-3 sm:gap-4">
                 @foreach ($SlidesHome as $item)
                     <button type="button" data-hero-dot
-                        class="{{ $loop->first ? 'w-6 bg-white' : 'w-2 bg-white/50' }} h-2 rounded-full transition-all duration-300 ease-out"
+                        class="{{ $loop->first ? 'bg-white' : 'bg-white/40' }} h-0.5 flex-1 rounded-full transition-colors duration-300 ease-out"
                         aria-label="Go to slide {{ $loop->iteration }}"
                         aria-current="{{ $loop->first ? 'true' : 'false' }}"></button>
                 @endforeach
