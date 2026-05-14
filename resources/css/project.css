@@ -17,9 +17,7 @@ h1, h2 {
    font-weight: var(--weight-button);
    line-height: 1;
    border-radius: var(--radius-button);
-   padding-inline: var(--padding-inline-button);
-   padding-block-start: 1rem;
-   padding-block-end: 0.75rem;
+   padding: 20px 24px 16px 24px;
    transition: background-color 0.2s, color 0.2s;
    cursor: pointer;
 }
