@@ -37,7 +37,7 @@
         <!-- Logo Desktop -->
         <div id="above-header" class="flex items-center justify-between py-5">
             <a href="/" class="inline-flex items-center">
-                <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-32" />
+                <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-28 md:w-28 lg:w-32" />
             </a>
 
             <!-- Language Desktop -->
@@ -78,21 +78,21 @@
                     class="absolute inset-0 bg-black/45 opacity-0 transition-opacity duration-300 ease-out"></button>
 
                 <div id="mobile-menu-panel"
-                    class="-translate-x-full relative flex h-full w-full max-w-[90%] flex-col bg-white px-4 py-4 transition-transform duration-300 ease-out">
+                    class="-translate-x-full relative flex h-full w-full max-w-[90%] md:max-w-[40%] flex-col bg-white px-4 py-5 transition-transform duration-300 ease-out">
 
                     <!-- Flyout Header -->
-                    <div class="flex items-start justify-between pb-8">
+                    <div id="logo-flyout" class="flex items-start justify-between pb-8">
                         <a href="/" class="inline-flex items-center">
-                            <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-24" />
+                            <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-28" />
                         </a>
                         <button type="button" id="mobile-menu-close" aria-label="Close menu"
-                            class="flex h-8 w-8 items-center justify-center text-3xl text-black">
+                            class="flex h-4 w-4 items-center justify-center text-2xl text-black">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
                     <!-- Flyout Menu -->
-                    <div class="border-t border-(--color-line) py-8">
+                    <div id="flyout-menu" class="border-t border-(--color-line) py-8">
                         <ul class="flex flex-col gap-4 font-(family-name:--font-body)">
                             @foreach ($menus as $menu)
                                 <li>
@@ -108,7 +108,7 @@
                     <div class="mt-auto border-t border-(--color-line) py-6 font-(family-name:--font-body) text-black">
 
                         <!-- Language Mobile -->
-                        <div class="flex items-center justify-between pb-6">
+                        <div id="lang-flyout" class="flex items-center justify-between pb-6">
                             <span class="uppercase">Pilih Bahasa</span>
                             <div class="flex items-center gap-2 font-(family-name:--font-display)">
                                 @foreach ($langs as $lang)
@@ -121,7 +121,7 @@
                         </div>
 
                         <!-- Contact Info -->
-                        <div class="border-t border-(--color-line) pt-8 flex flex-col gap-6">
+                        <div id="contact-flyout" class="border-t border-(--color-line) pt-8 flex flex-col gap-6">
                             <div>
                                 <p class="uppercase text-(--color-primary) mb-2">Telepon</p>
                                 <a href="tel:{{ preg_replace('/\s+/', '', $contact['phone']) }}"
