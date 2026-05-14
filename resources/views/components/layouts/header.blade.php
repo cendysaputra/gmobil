@@ -51,9 +51,9 @@
 @endphp
 
 <header id="header" class="header-fixed">
-    <div class="container relative z-10">
+    <div class="container z-10">
         <div id="above-header" class="flex items-center justify-between py-5">
-            <div id="logo" class="flex items-center">
+            <div id="logo">
                 <a href="/" class="inline-flex items-center">
                     <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-32" />
                 </a>
@@ -159,65 +159,3 @@
         </nav>
     </div>
 </header>
-
-<script>
-    (() => {
-        const toggleButton = document.getElementById('menu-toggle');
-        const closeButton = document.getElementById('mobile-menu-close');
-        const backdropButton = document.getElementById('mobile-menu-backdrop');
-        const menu = document.getElementById('mobile-menu');
-        const menuPanel = document.getElementById('mobile-menu-panel');
-        let closeTimer = null;
-
-        if (!toggleButton || !menu || !menuPanel || !backdropButton) {
-            return;
-        }
-
-        const setMenuState = (isOpen) => {
-            toggleButton.setAttribute('aria-expanded', String(isOpen));
-
-            if (closeTimer) {
-                window.clearTimeout(closeTimer);
-                closeTimer = null;
-            }
-
-            if (isOpen) {
-                menu.classList.remove('pointer-events-none', 'invisible', 'opacity-0');
-                menu.classList.add('pointer-events-auto', 'visible', 'opacity-100');
-                backdropButton.classList.remove('opacity-0');
-                backdropButton.classList.add('opacity-100');
-                menuPanel.classList.remove('-translate-x-full');
-                menuPanel.classList.add('translate-x-0');
-                document.body.classList.add('overflow-hidden');
-                return;
-            }
-
-            menu.classList.remove('pointer-events-auto', 'visible', 'opacity-100');
-            menu.classList.add('opacity-0');
-            backdropButton.classList.remove('opacity-100');
-            backdropButton.classList.add('opacity-0');
-            menuPanel.classList.remove('translate-x-0');
-            menuPanel.classList.add('-translate-x-full');
-            document.body.classList.remove('overflow-hidden');
-
-            closeTimer = window.setTimeout(() => {
-                menu.classList.add('pointer-events-none', 'invisible');
-                closeTimer = null;
-            }, 300);
-        };
-
-        toggleButton.addEventListener('click', () => {
-            const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-            setMenuState(!isExpanded);
-        });
-
-        closeButton?.addEventListener('click', () => setMenuState(false));
-        backdropButton?.addEventListener('click', () => setMenuState(false));
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                setMenuState(false);
-            }
-        });
-    })();
-</script>

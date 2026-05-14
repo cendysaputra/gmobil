@@ -111,7 +111,7 @@
             <div class="pointer-events-auto flex w-full items-center gap-3 sm:gap-4">
                 @foreach ($SlidesHome as $item)
                     <button type="button" data-hero-dot
-                        class="hero-slider-dot {{ $loop->first ? 'is-active' : '' }} h-1 flex-1 rounded-full"
+                        class="hero-slider-dot {{ $loop->first ? 'is-active' : '' }} h-0.5 flex-1 rounded-full"
                         aria-label="Go to slide {{ $loop->iteration }}"
                         aria-current="{{ $loop->first ? 'true' : 'false' }}"></button>
                 @endforeach

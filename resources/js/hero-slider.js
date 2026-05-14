@@ -26,6 +26,7 @@ const setupHeroSlider = () => {
     let currentIndex = 1;
     let autoplayId = null;
     let isDragging = false;
+    let hasDragged = false;
     let isAnimating = false;
     let startX = 0;
     let currentTranslate = 0;
@@ -119,6 +120,7 @@ const setupHeroSlider = () => {
 
     const resetDragState = () => {
         isDragging = false;
+        hasDragged = false;
         startX = 0;
         currentTranslate = previousTranslate;
         track.classList.remove('transition-none');
@@ -146,6 +148,11 @@ const setupHeroSlider = () => {
 
         if (pointerId !== undefined && slider.hasPointerCapture(pointerId)) {
             slider.releasePointerCapture(pointerId);
+        }
+
+        if (!hasDragged) {
+            resetDragState();
+            return;
         }
 
         const movedBy = currentTranslate - previousTranslate;
@@ -177,11 +184,10 @@ const setupHeroSlider = () => {
 
         syncDimensions();
         isDragging = true;
+        hasDragged = false;
         startX = event.clientX;
         previousTranslate = getTranslateForIndex(currentIndex);
         currentTranslate = previousTranslate;
-        track.classList.add('transition-none');
-        stopAutoplay();
         slider.setPointerCapture(event.pointerId);
     });
 
@@ -189,6 +195,16 @@ const setupHeroSlider = () => {
         if (!isDragging) return;
 
         const deltaX = event.clientX - startX;
+        const dragThreshold = 6;
+
+        if (!hasDragged) {
+            if (Math.abs(deltaX) < dragThreshold) return;
+
+            hasDragged = true;
+            track.classList.add('transition-none');
+            stopAutoplay();
+        }
+
         const edgeLimit = sliderWidth * 0.35;
         currentTranslate = previousTranslate + Math.max(-edgeLimit, Math.min(edgeLimit, deltaX));
         setTrackPosition(currentTranslate, false);
