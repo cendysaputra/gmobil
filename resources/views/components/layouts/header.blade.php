@@ -64,7 +64,8 @@
             <ul class="hidden lg:flex items-center justify-between gap-6 font-(family-name:--font-body) font-medium">
                 @foreach ($menus as $menu)
                     <li>
-                        <a href="{{ $menu['menu_link'] }}" class="text-white hover:text-(--color-primary)">
+                        <a href="{{ $menu['menu_link'] }}"
+                            class="text-white hover:text-(--color-primary) active:text-(--color-primary)">
                             {{ $menu['menu_text'] }}
                         </a>
                     </li>
@@ -97,7 +98,7 @@
                             @foreach ($menus as $menu)
                                 <li>
                                     <a href="{{ $menu['menu_link'] }}"
-                                        class="block text-black hover:text-(--color-primary)">
+                                        class="block text-black hover:text-(--color-primary) active:text-(--color-primary)">
                                         {{ $menu['menu_text'] }}
                                     </a>
                                 </li>
