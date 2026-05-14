@@ -1,42 +1,32 @@
 @php
-    $SlidesHome = [
+    $slides = [
         [
-            'slide' => [
-                'background' => asset('images/hero-slide1.jpg'),
-                'backgroundVideo' => '',
-                'title' => 'Kepastian Operasional untuk Bisnis Anda',
-                'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
-                'btnText' => 'Mulai Konsultasi',
-                'btnLink' => '/kontak',
-            ],
+            'background' => asset('images/hero-slide1.jpg'),
+            'backgroundVideo' => '',
+            'title' => 'Kepastian Operasional untuk Bisnis Anda',
+            'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
+            'btnText' => 'Mulai Konsultasi',
+            'btnLink' => '/kontak',
         ],
         [
-            'slide' => [
-                'background' => asset('images/hero-slide2.jpg'),
-                'backgroundVideo' => '',
-                'title' => 'Kepastian Operasional untuk Bisnis Anda',
-                'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
-                'btnText' => 'Mulai Konsultasi',
-                'btnLink' => '/kontak',
-            ],
+            'background' => asset('images/hero-slide2.jpg'),
+            'backgroundVideo' => '',
+            'title' => 'Kepastian Operasional untuk Bisnis Anda',
+            'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
+            'btnText' => 'Mulai Konsultasi',
+            'btnLink' => '/kontak',
         ],
         [
-            'slide' => [
-                'background' => asset('images/hero-slide1.jpg'),
-                'backgroundVideo' => '',
-                'title' => 'Kepastian Operasional untuk Bisnis Anda',
-                'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
-                'btnText' => 'Mulai Konsultasi',
-                'btnLink' => '/kontak',
-            ],
+            'background' => asset('images/hero-slide1.jpg'),
+            'backgroundVideo' => '',
+            'title' => 'Kepastian Operasional untuk Bisnis Anda',
+            'desc' => 'Investasi aman dengan jaminan layanan purna jual yang andal.',
+            'btnText' => 'Mulai Konsultasi',
+            'btnLink' => '/kontak',
         ],
     ];
 
-    $sliderHeight = [
-        'heightDesktop' => ['unit' => 'vh', 'value' => 100],
-        'heightTablet' => ['unit' => 'vh', 'value' => 70],
-        'heightMobile' => ['unit' => 'vh', 'value' => 100],
-    ];
+    $sliderHeight = 'min-h-[90svh] md:min-h-[60vh] lg:min-h-screen';
 @endphp
 
 {{-- Hero Slider --}}
@@ -47,54 +37,59 @@
         <div class="overflow-hidden">
             <div data-hero-track class="flex transition-transform duration-500 ease-out">
 
-                {{-- Loop tiap slide --}}
-                @foreach ($SlidesHome as $item)
-                    @php
-                        $slide = $item['slide'];
-                        $desktopHeight =
-                            $sliderHeight['heightDesktop']['value'] . $sliderHeight['heightDesktop']['unit'];
-                        $tabletHeight = $sliderHeight['heightTablet']['value'] . $sliderHeight['heightTablet']['unit'];
-                        $mobileHeight = $sliderHeight['heightMobile']['value'] . $sliderHeight['heightMobile']['unit'];
-                    @endphp
+                @foreach ($slides as $slide)
+                    {{-- Slide --}}
+                    <div data-hero-slide class="min-w-full">
+                        <div class="relative overflow-hidden bg-slate-900 {{ $sliderHeight }}">
 
-                    {{-- Slide wrapper --}}
-                    <div id="hero-background-slider" data-hero-slide class="min-w-full">
-                        <div class="relative overflow-hidden bg-slate-900"
-                            style="min-height: {{ $mobileHeight }}; --slider-height-tablet: {{ $tabletHeight }}; --slider-height-desktop: {{ $desktopHeight }};">
-
-                            {{-- Background video/image --}}
-                            @if (!empty($slide['backgroundVideo']))
-                                <video class="absolute inset-0 h-full w-full object-cover" autoplay muted loop
-                                    playsinline>
-                                    <source src="{{ $slide['backgroundVideo'] }}" type="video/mp4">
-                                </video>
-                            @else
+                            {{-- Background image/video --}}
+                            @if (empty($slide['backgroundVideo']))
                                 <img src="{{ $slide['background'] }}" alt="{{ $slide['title'] }}"
-                                    class="absolute inset-0 h-full w-full object-cover" />
+                                    class="pointer-events-none absolute inset-0 h-full w-full object-cover transform-(translateZ(0))" />
+                            @endif
+
+                            @if (!empty($slide['backgroundVideo']))
+                                @php
+                                    preg_match(
+                                        '/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\?v=|watch\?.+&v=))([^?&\s]+)/',
+                                        $slide['backgroundVideo'],
+                                        $ytMatch,
+                                    );
+                                    $ytId = $ytMatch[1] ?? null;
+                                @endphp
+                                @if ($ytId)
+                                    <iframe
+                                        class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                                        style="width: max(100%, 177.78vh); height: max(100%, 56.25vw);"
+                                        src="https://www.youtube.com/embed/{{ $ytId }}?autoplay=1&mute=1&loop=1&controls=0&rel=0&playlist={{ $ytId }}&playsinline=1"
+                                        frameborder="0" allow="autoplay; encrypted-media" title="{{ $slide['title'] }}">
+                                    </iframe>
+                                @else
+                                    <video class="pointer-events-none absolute inset-0 h-full w-full object-cover"
+                                        autoplay muted loop playsinline>
+                                        <source src="{{ asset($slide['backgroundVideo']) }}" type="video/mp4">
+                                    </video>
+                                @endif
                             @endif
 
                             {{-- Overlay --}}
                             <div class="hero-banner-overlay absolute inset-0"></div>
 
-                            {{-- Konten Slider --}}
-                            <div id="content-hero" class="absolute inset-0 z-10">
-                                <div
-                                    class="container flex justify-center items-center min-h-[inherit] md:min-h-(--slider-height-tablet) lg:min-h-(--slider-height-desktop)">
-                                    <div class="lg:w-200 text-center">
-
-                                        <h1 class="text-white max-w-none">
+                            {{-- Slide Content --}}
+                            <div class="absolute inset-0 z-10">
+                                <div class="container flex items-center justify-center {{ $sliderHeight }}">
+                                    <div class="text-left md:text-center md:w-170 lg:w-200">
+                                        <h1
+                                            class="max-w-none text-left md:text-center lg:text-center text-2xl md:text-3xl lg:text-4xl text-white">
                                             {{ $slide['title'] }}
                                         </h1>
-
-                                        <p class="mt-4 text-white max-w-none">
-                                            {{ $slide['desc'] }}
-                                        </p>
-
-                                        <button href="{{ $slide['btnLink'] }}"
+                                        <p
+                                            class="mx-auto text-left md:text-center lg:text-center mt-2 md:mt-4 lg:mt-4 text-white">
+                                            {{ $slide['desc'] }}</p>
+                                        <a href="{{ $slide['btnLink'] }}"
                                             class="button-secondary mt-8 bg-(--color-bg-button-secondary) text-(--color-text-button-secondary) hover:bg-(--color-primary) hover:text-white">
                                             {{ $slide['btnText'] }}
-                                        </button>
-
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -108,8 +103,8 @@
 
         {{-- Navigasi Dots --}}
         <div class="pointer-events-none absolute inset-x-0 bottom-6 z-10 px-6 sm:px-8 lg:px-10">
-            <div class="pointer-events-auto flex w-full items-center gap-3 sm:gap-4">
-                @foreach ($SlidesHome as $item)
+            <div class="pointer-events-auto flex items-center gap-3 sm:gap-4">
+                @foreach ($slides as $slide)
                     <button type="button" data-hero-dot
                         class="hero-slider-dot {{ $loop->first ? 'is-active' : '' }} h-0.5 flex-1 rounded-full"
                         aria-label="Go to slide {{ $loop->iteration }}"
