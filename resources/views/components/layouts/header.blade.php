@@ -78,7 +78,7 @@
                     class="absolute inset-0 bg-black/45 opacity-0 transition-opacity duration-300 ease-out"></button>
 
                 <div id="mobile-menu-panel"
-                    class="-translate-x-full relative flex h-full w-full max-w-[90%] md:max-w-[40%] flex-col bg-white px-4 py-5 transition-transform duration-300 ease-out">
+                    class="flex h-full w-full max-w-[90%] md:max-w-[40%] flex-col bg-white px-4 py-5 transition-transform duration-300 ease-out">
 
                     <!-- Flyout Header -->
                     <div id="logo-flyout" class="flex items-start justify-between pb-8">
@@ -113,7 +113,7 @@
                             <div class="flex items-center gap-2 font-(family-name:--font-display)">
                                 @foreach ($langs as $lang)
                                     <a href="?lang={{ strtolower($lang) }}"
-                                        class="text-black flex h-10 min-w-10 items-center justify-center border border-(--color-line) px-3 leading-none transition-colors hover:bg-(--color-secondary) hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-secondary) text-(--color-text-button-secondary)' : '' }}">
+                                        class="text-black flex h-10 w-10 items-center justify-center border border-(--color-line) transition-colors hover:bg-(--color-secondary) hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-secondary) text-(--color-text-button-secondary)' : '' }}">
                                         {{ $lang }}
                                     </a>
                                 @endforeach
@@ -125,14 +125,14 @@
                             <div>
                                 <p class="uppercase text-(--color-primary) mb-2">Telepon</p>
                                 <a href="tel:{{ preg_replace('/\s+/', '', $contact['phone']) }}"
-                                    class="text-[1.3em] text-black hover:text-(--color-primary)">
+                                    class="text-[1.2em] text-black hover:text-(--color-primary)">
                                     {{ $contact['phone'] }}
                                 </a>
                             </div>
                             <div>
                                 <p class="uppercase text-(--color-primary) mb-2">Email</p>
                                 <a href="mailto:{{ $contact['email'] }}"
-                                    class="text-[1.3em] text-black hover:text-(--color-primary)">
+                                    class="text-[1.2em] text-black hover:text-(--color-primary)">
                                     {{ $contact['email'] }}
                                 </a>
                             </div>
