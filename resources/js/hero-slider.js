@@ -44,6 +44,12 @@ const setupHeroSlider = () => {
 
         if (!activeDot) return;
 
+        dots.forEach((dot, index) => {
+            if (index !== activeIndex) {
+                dot.classList.remove('is-active');
+            }
+        });
+
         activeDot.classList.remove('is-active');
         void activeDot.offsetWidth;
         activeDot.classList.add('is-active');
@@ -52,7 +58,7 @@ const setupHeroSlider = () => {
     const updateDots = () => {
         dots.forEach((dot, index) => {
             const isActive = index === activeIndex;
-            dot.classList.toggle('is-active', isActive);
+            dot.classList.toggle('is-current', isActive);
             dot.setAttribute('aria-current', String(isActive));
         });
     };
@@ -165,7 +171,6 @@ const setupHeroSlider = () => {
         }
 
         resetDragState();
-        startAutoplay();
     };
 
     dots.forEach((dot, index) => {
@@ -175,6 +180,7 @@ const setupHeroSlider = () => {
 
         dot.addEventListener('click', () => {
             if (isDragging) return;
+            stopAutoplay();
             renderTrackIndex(index + 1);
         });
     });
@@ -226,8 +232,8 @@ const setupHeroSlider = () => {
         event.preventDefault();
     });
 
-    track.addEventListener('transitionend', () => {
-        if (!isAnimating) return;
+    track.addEventListener('transitionend', (event) => {
+        if (event.target !== track || event.propertyName !== 'transform' || !isAnimating) return;
 
         isAnimating = false;
 

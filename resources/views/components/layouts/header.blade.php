@@ -79,7 +79,7 @@
                     class="absolute inset-0 bg-black/45 opacity-0 transition-opacity duration-300 ease-out"></button>
 
                 <div id="mobile-menu-panel"
-                    class="flex h-full w-full max-w-[90%] md:max-w-[40%] flex-col bg-white px-4 py-5 transition-transform duration-300 ease-out">
+                    class="-translate-x-full flex h-full w-full max-w-[90%] md:max-w-[40%] flex-col bg-white px-4 py-5 transition-transform duration-300 ease-out">
 
                     <!-- Flyout Header -->
                     <div id="logo-flyout" class="flex items-start justify-between pb-8">

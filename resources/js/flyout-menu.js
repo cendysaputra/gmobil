@@ -20,12 +20,16 @@ const setupFlyoutMenu = () => {
 
         if (isOpen) {
             menu.classList.remove('pointer-events-none', 'invisible', 'opacity-0');
-            menu.classList.add('pointer-events-auto', 'visible', 'opacity-100');
-            backdropButton.classList.remove('opacity-0');
-            backdropButton.classList.add('opacity-100');
-            menuPanel.classList.remove('-translate-x-full');
-            menuPanel.classList.add('translate-x-0');
+            menu.classList.add('pointer-events-auto', 'visible');
             document.body.classList.add('overflow-hidden');
+
+            requestAnimationFrame(() => {
+                menu.classList.add('opacity-100');
+                backdropButton.classList.remove('opacity-0');
+                backdropButton.classList.add('opacity-100');
+                menuPanel.classList.remove('-translate-x-full');
+                menuPanel.classList.add('translate-x-0');
+            });
             return;
         }
 
