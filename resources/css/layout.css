@@ -26,13 +26,13 @@ section, .section {
 @media (max-width: 768px) {
   .container {
     max-width: var(--width-container-tablet);
-    padding-inline: var(--padding-inline-container-tablet);
+    padding-inline: 24px;
   }
 }
 
 @media (max-width: 640px) {
   .container {
-    padding-inline: var(--padding-inline-container-mobile);
+    padding-inline: 16px;
   }
 }
 

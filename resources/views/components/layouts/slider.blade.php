@@ -87,7 +87,7 @@
                                             class="mx-auto text-left md:text-center lg:text-center mt-2 md:mt-4 lg:mt-4 text-white">
                                             {{ $slide['desc'] }}</p>
                                         <a href="{{ $slide['btnLink'] }}"
-                                            class="button-secondary mt-8 bg-(--color-bg-button-secondary) text-(--color-text-button-secondary) hover:bg-(--color-primary) hover:text-white">
+                                            class="button button--secondary mt-8 bg-(--color-bg-button-secondary) text-(--color-text-button-secondary) hover:bg-(--color-primary) hover:text-white">
                                             {{ $slide['btnText'] }}
                                         </a>
                                     </div>

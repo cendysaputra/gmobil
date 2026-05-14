@@ -4,25 +4,6 @@ h1, h2 {
 }
 
 
-/* Button Global */
-.button-primary,
-.button-secondary {
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   text-transform: uppercase;
-   letter-spacing: 2px;
-   font-family: var(--font-button);
-   font-size: var(--text-button);
-   font-weight: var(--weight-button);
-   line-height: 1;
-   border-radius: var(--radius-button);
-   padding: 20px 24px 16px 24px;
-   transition: background-color 0.2s, color 0.2s;
-   cursor: pointer;
-}
-
-
 /* Social Media Icons */
 .social-icon {
     background-color: var(--color-primary);
@@ -86,4 +67,15 @@ h1, h2 {
     to {
         transform: scaleX(1);
     }
+}
+
+
+/* Overlay CTA White */
+.overlay-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(0deg, rgba(255,255,255,0.00) 50.42%, #FFF 96.7%),
+        radial-gradient(57.01% 89.76% at 20.1% 10.24%, rgba(255,255,255,0.85) 55.77%, rgba(255,255,255,0.46) 74.04%, rgba(255,255,255,0.00) 100%);
 }
