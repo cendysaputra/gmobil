@@ -1519,10 +1519,7 @@
 </head>
 
 <body>
-    <x-layouts.header />
     {{ $slot }}
-    <x-layouts.cta />
-    <x-layouts.footer />
 </body>
 
 </html>

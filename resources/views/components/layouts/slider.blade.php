@@ -79,8 +79,7 @@
                             <div class="absolute inset-0 z-10">
                                 <div class="container flex items-center justify-center {{ $sliderHeight }}">
                                     <div class="text-left md:text-center md:w-170 lg:w-200">
-                                        <h1
-                                            class="max-w-none text-left md:text-center lg:text-center text-2xl md:text-3xl lg:text-4xl text-white">
+                                        <h1 class="max-w-none text-left md:text-center lg:text-center text-white">
                                             {{ $slide['title'] }}
                                         </h1>
                                         <p
