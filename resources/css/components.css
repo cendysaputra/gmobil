@@ -2,6 +2,10 @@
     color: var(--color-text-button-primary);
     background: var(--color-bg-button-primary);
     text-transform: uppercase;
+    border-radius: 100px;
+    padding: 14px 24px 12px 24px;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
 }
 
 .button--primary:hover {
@@ -13,6 +17,10 @@
     color: var(--color-text-button-secondary);
     background: var(--color-bg-button-secondary);
     text-transform: uppercase;
+    border-radius: 100px;
+    padding: 14px 24px 12px 24px;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
 }
 
 .button--secondary:hover {

@@ -12,8 +12,8 @@
             'menu_text' => 'Tentang',
             'menu_link' => '/tentang',
             'children' => [
-                ['menu_text' => 'Visi & Misi', 'menu_link' => '/tentang#visi-misi'],
-                ['menu_text' => 'Team', 'menu_link' => '/tentang#team'],
+                ['menu_text' => 'Manajemen', 'menu_link' => '/manajemen'],
+                ['menu_text' => 'Sertifikat & Penghargaan', 'menu_link' => '/sertifikat-penghargaan'],
             ],
         ],
         ['menu_text' => 'Dealer', 'menu_link' => '/dealer'],
@@ -34,17 +34,49 @@
 
 <header id="header" class="header-fixed">
     <div class="container">
-        <!-- Logo Desktop -->
-        <div id="above-header" class="flex items-center justify-between py-5">
+        <div class="flex items-center justify-between border-b border-(--color-line)/20 py-5 lg:gap-8">
             <a href="/" class="inline-flex items-center">
                 <img src="{{ $logo_url }}" alt="GM Mobil Logo" class="h-auto w-28 md:w-28 lg:w-32" />
             </a>
+
+            <!-- Desktop Navigation -->
+            <nav id="desktop-menu" class="hidden lg:flex flex-1 justify-center">
+                <ul class="flex items-center justify-center gap-16 font-(family-name:--font-body)">
+                    @foreach ($menus as $menu)
+                        <li class="group relative">
+                            <a href="{{ $menu['menu_link'] }}"
+                                class="flex items-center gap-2 text-white hover:text-(--color-primary) active:text-(--color-primary)">
+                                <span>{{ $menu['menu_text'] }}</span>
+                                @if (!empty($menu['children']))
+                                    <span class="text-xs leading-none transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180">
+                                        ▼
+                                    </span>
+                                @endif
+                            </a>
+
+                            @if (!empty($menu['children']))
+                                <ul
+                                    class="invisible absolute left-1/2 top-full z-30 mt-4 min-w-56 -translate-x-1/2 rounded-2xl border border-(--color-line)/20 bg-white p-3 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                                    @foreach ($menu['children'] as $child)
+                                        <li>
+                                            <a href="{{ $child['menu_link'] }}"
+                                                class="block rounded-xl px-4 py-3 text-black transition-colors hover:bg-(--color-surface) hover:text-(--color-primary)">
+                                                {{ $child['menu_text'] }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
+                    @endforeach
+                </ul>
+            </nav>
 
             <!-- Language Desktop -->
             <div class="hidden lg:flex items-center gap-0.5 text-sm font-(family-name:--font-display)">
                 @foreach ($langs as $lang)
                     <a href="?lang={{ strtolower($lang) }}"
-                        class="flex h-9 min-w-9 items-center justify-center px-2 leading-none transition-colors hover:bg-(--color-secondary) hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-secondary) text-(--color-text-button-secondary)' : 'text-white' }}">
+                        class="flex h-9 min-w-9 items-center justify-center rounded-full leading-none transition-colors hover:bg-white hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-white text-(--color-text-button-secondary)' : 'text-white' }}">
                         {{ $lang }}
                     </a>
                 @endforeach
@@ -59,19 +91,7 @@
             </button>
         </div>
 
-        <!-- Desktop Navigation -->
-        <nav id="desktop-menu" class="lg:border-t lg:border-(--color-line)/20 lg:py-5">
-            <ul class="hidden lg:flex items-center justify-between gap-6 font-(family-name:--font-body) font-medium">
-                @foreach ($menus as $menu)
-                    <li>
-                        <a href="{{ $menu['menu_link'] }}"
-                            class="text-white hover:text-(--color-primary) active:text-(--color-primary)">
-                            {{ $menu['menu_text'] }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-
+        <nav>
             <!-- Mobile Flyout Menu -->
             <div id="mobile-menu"
                 class="pointer-events-none invisible opacity-0 lg:hidden fixed inset-0 z-50 transition-opacity duration-300 ease-out">
@@ -96,11 +116,24 @@
                     <div id="flyout-menu" class="border-t border-(--color-line) py-8">
                         <ul class="flex flex-col gap-4 font-(family-name:--font-body)">
                             @foreach ($menus as $menu)
-                                <li>
+                                <li class="flex flex-col gap-3">
                                     <a href="{{ $menu['menu_link'] }}"
                                         class="block text-black hover:text-(--color-primary) active:text-(--color-primary)">
                                         {{ $menu['menu_text'] }}
                                     </a>
+
+                                    @if (!empty($menu['children']))
+                                        <ul class="ml-4 flex flex-col gap-3 border-l border-(--color-line) pl-4">
+                                            @foreach ($menu['children'] as $child)
+                                                <li>
+                                                    <a href="{{ $child['menu_link'] }}"
+                                                        class="block text-sm text-(--color-text) hover:text-(--color-primary) active:text-(--color-primary)">
+                                                        {{ $child['menu_text'] }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </li>
                             @endforeach
                         </ul>
@@ -114,7 +147,7 @@
                             <div class="flex items-center gap-2 font-(family-name:--font-display)">
                                 @foreach ($langs as $lang)
                                     <a href="?lang={{ strtolower($lang) }}"
-                                        class="text-black flex h-10 w-10 items-center justify-center border border-(--color-line) transition-colors hover:bg-(--color-secondary) hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-secondary) text-(--color-text-button-secondary)' : '' }}">
+                                        class="text-black flex h-10 w-10 items-center justify-center rounded-full border border-(--color-line) transition-colors hover:bg-white hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-white text-(--color-text-button-secondary)' : '' }}">
                                         {{ $lang }}
                                     </a>
                                 @endforeach

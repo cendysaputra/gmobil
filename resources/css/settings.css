@@ -25,9 +25,9 @@
     /*h1*/
     --font-h1: var(--font-display);
     --weight-h1: var(--weight-semibold);
-    --text-h1: var(--text-4xl);
-    --text-h1-tablet: var(--text-3xl);
-    --text-h1-mobile: var(--text-2xl);
+    --text-h1: 4rem;
+    --text-h1-tablet: 2rem;
+    --text-h1-mobile: 2rem;
     --leading-h1: var(--leading-tight);
     --tracking-h1: var(--tracking-tightest);
     --transform-h1: none;
@@ -97,7 +97,7 @@
     /*p*/
     --font-p: var(--font-body);
     --weight-p: var(--weight-regular);
-    --text-p: 1rem;
+    --text-p: 16px;
     --text-p-tablet: 14px;
     --text-p-mobile: 14px;
     --leading-p: var(--leading-relaxed);

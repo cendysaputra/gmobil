@@ -225,7 +225,7 @@ tfoot {
 }
 
 /* Responsive typography */
-@media (max-width: var(--breakpoint-tablet)) {
+@media (max-width: 768px) {
     h1 {
         font-size: var(--text-h1-tablet);
     }
@@ -295,7 +295,7 @@ tfoot {
     }
 }
 
-@media (max-width: var(--breakpoint-mobile)) {
+@media (max-width: 640px) {
     h1 {
         font-size: var(--text-h1-mobile);
     }
