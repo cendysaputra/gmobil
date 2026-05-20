@@ -27,3 +27,8 @@
    color: var(--color-text-button-primary);
    background: var(--color-bg-button-primary);
 }
+
+.button--primary svg, 
+.button--secondary svg {
+   margin-top: -3px;
+}

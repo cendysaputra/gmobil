@@ -120,23 +120,46 @@
                     <div id="flyout-menu" class="border-t border-(--color-line) py-8">
                         <ul class="flex flex-col gap-4 font-(family-name:--font-body)">
                             @foreach ($menus as $menu)
-                                <li class="flex flex-col gap-3">
-                                    <a href="{{ $menu['menu_link'] }}"
-                                        class="block text-black hover:text-(--color-primary) active:text-(--color-primary)">
-                                        {{ $menu['menu_text'] }}
-                                    </a>
-
+                                <li>
                                     @if (!empty($menu['children']))
-                                        <ul class="ml-4 flex flex-col gap-3 border-l border-(--color-line) pl-4">
-                                            @foreach ($menu['children'] as $child)
+                                        <details class="group">
+                                            <summary
+                                                class="flex cursor-pointer list-none items-center justify-between gap-4 text-black transition-colors hover:text-(--color-primary)">
+                                                <span class="block flex-1">
+                                                    {{ $menu['menu_text'] }}
+                                                </span>
+                                                <span
+                                                    class="flex h-3 w-3 items-center justify-center text-black transition-transform duration-200 group-open:rotate-180">
+                                                    <svg viewBox="0 0 12 8" fill="none" aria-hidden="true"
+                                                        class="h-2.5 w-3">
+                                                        <path d="M1 1.25L6 6.25L11 1.25" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </span>
+                                            </summary>
+
+                                            <ul class="mt-1 ml-2 flex flex-col gap-2">
                                                 <li>
-                                                    <a href="{{ $child['menu_link'] }}"
-                                                        class="block text-sm text-(--color-text) hover:text-(--color-primary) active:text-(--color-primary)">
-                                                        {{ $child['menu_text'] }}
+                                                    <a href="{{ $menu['menu_link'] }}"
+                                                        class="block text-sm text-black hover:text-(--color-primary) active:text-(--color-primary)">
                                                     </a>
                                                 </li>
-                                            @endforeach
-                                        </ul>
+                                                @foreach ($menu['children'] as $child)
+                                                    <li>
+                                                        <a href="{{ $child['menu_link'] }}"
+                                                            class="block text-sm text-(--color-text) hover:text-(--color-primary) active:text-(--color-primary)">
+                                                            {{ $child['menu_text'] }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </details>
+                                    @else
+                                        <a href="{{ $menu['menu_link'] }}"
+                                            class="block text-black hover:text-(--color-primary) active:text-(--color-primary)">
+                                            {{ $menu['menu_text'] }}
+                                        </a>
                                     @endif
                                 </li>
                             @endforeach
@@ -151,7 +174,7 @@
                             <div class="flex items-center gap-2 font-(family-name:--font-display)">
                                 @foreach ($langs as $lang)
                                     <a href="?lang={{ strtolower($lang) }}"
-                                        class="text-black grid h-10 w-10 place-items-center rounded-full border border-(--color-line) text-center leading-none transition-colors hover:bg-white hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-white text-(--color-text-button-secondary)' : '' }}">
+                                        class="text-black grid h-10 w-10 place-items-center rounded-full border border-(--color-line) text-center leading-none transition-colors hover:bg-(--color-secondary) hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-secondary) text-(--color-text-button-secondary)' : '' }}">
                                         <span style="line-height:1;display:block;">{{ $lang }}</span>
                                     </a>
                                 @endforeach
