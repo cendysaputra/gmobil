@@ -32,7 +32,7 @@
     ];
 @endphp
 
-<header id="header" class="header-fixed">
+<header id="single-header">
     <div class="container">
         <div class="flex items-center justify-between border-b border-(--color-line)/20 py-5 lg:gap-8">
             <a href="/" class="inline-flex items-center">
@@ -45,7 +45,7 @@
                     @foreach ($menus as $menu)
                         <li class="group relative shrink-0">
                             <a href="{{ $menu['menu_link'] }}"
-                                class="flex items-center gap-2 text-white hover:text-(--color-primary) active:text-(--color-primary)">
+                                class="flex items-center gap-2 text-black hover:text-(--color-primary) active:text-(--color-primary)">
                                 <span>{{ $menu['menu_text'] }}</span>
                                 @if (!empty($menu['children']))
                                     <span
@@ -80,7 +80,7 @@
             <div class="hidden lg:flex items-center gap-0.5 text-sm font-(family-name:--font-display)">
                 @foreach ($langs as $lang)
                     <a href="?lang={{ strtolower($lang) }}"
-                        class="grid h-9 w-9 place-items-center rounded-full text-center leading-none transition-colors hover:bg-white hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-white text-(--color-text-button-secondary)' : 'text-white' }}">
+                        class="grid h-9 w-9 place-items-center rounded-full text-center leading-none transition-colors hover:bg-(--color-surface) hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-surface) text-(--color-text-button-secondary)' : 'text-black' }}">
                         <span style="line-height:1;display:block;">{{ $lang }}</span>
                     </a>
                 @endforeach
@@ -89,9 +89,9 @@
             <!-- Hamburger Button -->
             <button id="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false"
                 class="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1">
-                <span class="block w-6 h-0.5 bg-white"></span>
-                <span class="block w-6 h-0.5 bg-white"></span>
-                <span class="block w-6 h-0.5 bg-white"></span>
+                <span class="block w-6 h-0.5 bg-black"></span>
+                <span class="block w-6 h-0.5 bg-black"></span>
+                <span class="block w-6 h-0.5 bg-black"></span>
             </button>
         </div>
 

@@ -15,7 +15,7 @@
             <h2 class="w-full lg:w-4xl">{{ $cta_title }}</h2>
             <p class="w-full lg:w-120">{{ $cta_desc }}</p>
             <a href="{{ $cta_button['button_link'] }}"
-                class="button button--secondary gap-4 bg-(--color-bg-button-secondary) text-(--color-text-button-secondary) hover:bg-(--color-primary) hover:text-white">
+                class="button button--secondary gap-4 bg-(--color-bg-button-primary) text-(--color-text-button-primary) hover:bg-(--color-secondary) hover:text-(--color-text-button-secondary)">
                 <span>{{ $cta_button['button_text'] }}</span>
                 <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
                     <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"

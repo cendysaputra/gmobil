@@ -1,5 +1,5 @@
 <x-layouts.main>
-    <x-layouts.header />
+    <x-layouts.single-header />
     <main>
         <x-layouts.slider />
         <x-layouts.cta />
