@@ -26,25 +26,23 @@
     --font-h1: var(--font-display);
     --weight-h1: var(--weight-semibold);
     --text-h1: 4rem;
-    --text-h1-tablet: 2rem;
+    --text-h1-tablet: 2.5rem;
     --text-h1-mobile: 2rem;
     --leading-h1: var(--leading-tight);
     --tracking-h1: var(--tracking-tightest);
     --transform-h1: none;
     --color-h1: var(--color-heading);
-    --measure-h1: 18ch;
 
     /*h2*/
     --font-h2: var(--font-display);
     --weight-h2: var(--weight-bold);
-    --text-h2: var(--text-2xl);
-    --text-h2-tablet: var(--text-xl);
-    --text-h2-mobile: var(--text-lg);
+    --text-h2: 3rem;
+    --text-h2-tablet: 2rem;
+    --text-h2-mobile: 1.8rem;
     --leading-h2: var(--leading-tight);
     --tracking-h2: var(--tracking-tight);
     --transform-h2: none;
     --color-h2: var(--color-heading);
-    --measure-h2: 22ch;
 
     /*h3*/
     --font-h3: var(--font-display);
@@ -104,7 +102,6 @@
     --tracking-p: var(--tracking-normal);
     --transform-p: none;
     --color-p: var(--color-text);
-    --measure-p: var(--measure);
 
     /*a*/
     --font-a: inherit;

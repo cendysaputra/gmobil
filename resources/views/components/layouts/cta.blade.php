@@ -8,14 +8,20 @@
 
 <section id="call-to-action">
     <div class="relative">
-        <div class="overlay-cta">
-            <img src="{{ $cta_background }}" alt="CTA Background" class="w-full h-125 object-cover">
+        <div id="cta-image" class="overlay-cta">
+            <img src="{{ $cta_background }}" alt="CTA Background" class="w-full h-120 md:h-120 lg:h-200 object-cover">
         </div>
-        <div id="cta-content" class="container flow absolute inset-0 z-10 mt-32">
-            <h2>{{ $cta_title }}</h2>
-            <p>{{ $cta_desc }}</p>
+        <div id="cta-content" class="container flow absolute inset-0 z-10 mt-14 lg:mt-32">
+            <h2 class="w-full lg:w-4xl">{{ $cta_title }}</h2>
+            <p class="w-full lg:w-120">{{ $cta_desc }}</p>
             <a href="{{ $cta_button['button_link'] }}"
-                class="button button--primary bg-(--color-bg-button-primary) text-white hover:bg-(--color-secondary) hover:text-black">{{ $cta_button['button_text'] }}</a>
+                class="button button--secondary gap-4 bg-(--color-bg-button-secondary) text-(--color-text-button-secondary) hover:bg-(--color-primary) hover:text-white">
+                <span>{{ $cta_button['button_text'] }}</span>
+                <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
+                    <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </a>
         </div>
     </div>
 </section>
