@@ -1,29 +1,11 @@
 @php
     $company_name = 'PT Gaya Makmur Mobil';
-    $menus = [
-        ['menu_text' => 'Beranda', 'menu_link' => '/'],
-        [
-            'menu_text' => 'Tentang',
-            'menu_link' => '/tentang',
-            'children' => [
-                ['menu_text' => 'Visi & Misi', 'menu_link' => '/tentang#visi-misi'],
-                ['menu_text' => 'Team', 'menu_link' => '/tentang#team'],
-            ],
-        ],
-        ['menu_text' => 'Dealer', 'menu_link' => '/dealer'],
-        ['menu_text' => 'Produk', 'menu_link' => '/produk'],
-        [
-            'menu_text' => 'Layanan',
-            'menu_link' => '/layanan',
-            'children' => [
-                ['menu_text' => 'Layanan 1', 'menu_link' => '/layanan/1'],
-                ['menu_text' => 'Layanan 2', 'menu_link' => '/layanan/2'],
-            ],
-        ],
-        ['menu_text' => 'Berita dan Artikel', 'menu_link' => '/artikel'],
-        ['menu_text' => 'Karier', 'menu_link' => '/karier'],
-        ['menu_text' => 'Kontak', 'menu_link' => '/kontak'],
-    ];
+    $footer_title = 'Langkah Pertama untuk Operasional yang Lebih Efisien';
+    $footer_desc =
+        'Tim konsultan kami siap mendengarkan kebutuhan Anda dan memberikan rekomendasi solusi yang paling sesuai.';
+    $footer_button = ['btnText' => 'Konsultasi Sekarang', 'btnLink' => '/kontak'];
+    $footer_background = asset('images/footer-background.jpg');
+    $image_footer = asset('images/footer-image.png');
     $socials = [
         [
             'name' => 'Instagram',
@@ -39,34 +21,47 @@
     ];
 @endphp
 
-<footer id="footer" class="relative z-10 -mt-8 rounded-t-2xl md:-mt-8 md:rounded-t-3xl lg:-mt-10 lg:rounded-t-4xl">
-    <div class="container">
-        <div id="footer-menu-wrapper" class="overflow-x-auto border-b border-(--color-line)">
-            <ul
-                class="flex min-w-max items-center gap-6 whitespace-nowrap py-8 md:justify-between lg:min-w-0 lg:justify-between lg:gap-4">
-                @foreach ($menus as $menu)
-                    <li class="shrink-0">
-                        <a href="{{ $menu['menu_link'] }}"
-                            class="text-(--color-text) hover:text-(--color-primary) font-(family-name:--font-body) font-normal">
-                            {{ $menu['menu_text'] }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
+<footer id="footer">
+    <div class="relative overflow-hidden rounded-t-[80px] bg-(--color-primary)">
+        <div id="footer-background" class="overlay-footer">
+            <img src="{{ $footer_background }}" alt="Footer Background"
+                class="w-full h-120 md:h-120 lg:h-130 object-cover mix-blend-multiply">
         </div>
 
-        <div id="footer-copyright"
-            class="flex flex-col-reverse md:flex-row lg:flex-row items-center justify-between gap-4 py-8">
-            <p class="text-(--color-text)">© {{ date('Y') }} {{ $company_name }}</p>
-            <div id="social-icons-wrapper" class="flex items-center gap-5">
-                @foreach ($socials as $social)
-                    <a href="{{ $social['link'] }}" target="_blank" rel="noopener noreferrer"
-                        title="{{ $social['name'] }}">
-                        <span class="social-icon block w-5 h-5"
-                            style="--icon-url: url('{{ $social['icon'] }}');"></span>
-                    </a>
-                @endforeach
+        <div id="content-footer" class="absolute inset-x-0 top-0 z-10">
+            <div class="container flex translate-y-[20%]">
+                <div id="image-footer">
+                    <img src="{{ $image_footer }}" alt="Footer Background" class="-mb-10 -mt-10">
+                </div>
+                <div id="cta-footer" class="w-[80%] flex flex-col justify-between gap-24">
+                    <div id="cta-footer-top">
+                        <h2 class="text-white">{{ $footer_title }}</h2>
+                        <p class="text-white">{{ $footer_desc }}</p>
+                        <div class="flex gap-10 mt-8 items-center">
+                            <div id="media-sosial" class="flex gap-8">
+                                @foreach ($socials as $social)
+                                    <a href="{{ $social['link'] }}" target="_blank" rel="noopener noreferrer"
+                                        title="{{ $social['name'] }}">
+                                        <span class="social-icon-white block w-6 h-6"
+                                            style="--icon-url: url('{{ $social['icon'] }}');"></span>
+                                    </a>
+                                @endforeach
+                            </div>
+                            <a id="button-footer" href="{{ $footer_button['btnLink'] }}"
+                                class="button gap-4 button--white">
+                                <span>{{ $footer_button['btnText'] }}</span>
+                                <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
+                                    <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="footer-copyright"
+                        class="flex flex-col-reverse md:flex-row lg:flex-row items-center justify-between gap-4 py-8">
+                        <p class="text-white font-normal">© {{ date('Y') }} {{ $company_name }}</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </footer>
