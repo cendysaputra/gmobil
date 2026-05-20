@@ -39,7 +39,7 @@
     ];
 @endphp
 
-<footer id="footer">
+<footer id="footer" class="relative z-10 -mt-8 rounded-t-2xl md:-mt-8 md:rounded-t-3xl lg:-mt-10 lg:rounded-t-4xl">
     <div class="container">
         <div id="footer-menu-wrapper" class="overflow-x-auto border-b border-(--color-line)">
             <ul
@@ -47,7 +47,7 @@
                 @foreach ($menus as $menu)
                     <li class="shrink-0">
                         <a href="{{ $menu['menu_link'] }}"
-                            class="text-(--color-text) hover:text-(--color-primary) font-normal">
+                            class="text-(--color-text) hover:text-(--color-primary) font-(family-name:--font-body) font-normal">
                             {{ $menu['menu_text'] }}
                         </a>
                     </li>

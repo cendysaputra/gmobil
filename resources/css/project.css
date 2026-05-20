@@ -83,10 +83,3 @@ h1, h2 {
         linear-gradient(0deg, rgba(255,255,255,0.00) 50.42%, #FFF 96.7%),
         radial-gradient(57.01% 89.76% at 20.1% 10.24%, rgba(255,255,255,0.85) 55.77%, rgba(255,255,255,0.46) 74.04%, rgba(255,255,255,0.00) 100%);
 }
-
-
-
-/* Border Radius */
-.radius-primary {
-   border-radius: 8px;
-}
