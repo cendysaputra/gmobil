@@ -22,8 +22,8 @@
             'menu_text' => 'Layanan',
             'menu_link' => '/layanan',
             'children' => [
-                ['menu_text' => 'Layanan 1', 'menu_link' => '/layanan/1'],
-                ['menu_text' => 'Layanan 2', 'menu_link' => '/layanan/2'],
+                ['menu_text' => 'Layanan 1', 'menu_link' => '/layanan'],
+                ['menu_text' => 'Layanan 2', 'menu_link' => '/layanan'],
             ],
         ],
         ['menu_text' => 'Berita dan Artikel', 'menu_link' => '/artikel'],
@@ -48,19 +48,23 @@
                                 class="flex items-center gap-2 text-white hover:text-(--color-primary) active:text-(--color-primary)">
                                 <span>{{ $menu['menu_text'] }}</span>
                                 @if (!empty($menu['children']))
-                                    <span class="text-xs leading-none transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180">
-                                        ▼
+                                    <span
+                                        class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180">
+                                        <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" class="h-2.5 w-3">
+                                            <path d="M1 1.25L6 6.25L11 1.25" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
                                     </span>
                                 @endif
                             </a>
 
                             @if (!empty($menu['children']))
                                 <ul
-                                    class="invisible absolute left-1/2 top-full z-30 mt-4 min-w-56 -translate-x-1/2 rounded-2xl border border-(--color-line)/20 bg-white p-3 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                                    class="invisible absolute left-1/2 z-30 mt-8 min-w-56 -translate-x-1/2 radius-primary border border-(--color-line)/20 bg-white p-3 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                                     @foreach ($menu['children'] as $child)
                                         <li>
                                             <a href="{{ $child['menu_link'] }}"
-                                                class="block rounded-xl px-4 py-3 text-black transition-colors hover:bg-(--color-surface) hover:text-(--color-primary)">
+                                                class="block px-1 py-1.5 text-black transition-colors hover:text-(--color-primary) text-sm">
                                                 {{ $child['menu_text'] }}
                                             </a>
                                         </li>
@@ -76,8 +80,8 @@
             <div class="hidden lg:flex items-center gap-0.5 text-sm font-(family-name:--font-display)">
                 @foreach ($langs as $lang)
                     <a href="?lang={{ strtolower($lang) }}"
-                        class="flex h-9 min-w-9 items-center justify-center rounded-full leading-none transition-colors hover:bg-white hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-white text-(--color-text-button-secondary)' : 'text-white' }}">
-                        {{ $lang }}
+                        class="grid h-9 w-9 place-items-center rounded-full text-center leading-none transition-colors hover:bg-white hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-white text-(--color-text-button-secondary)' : 'text-white' }}">
+                        <span style="line-height:1;display:block;">{{ $lang }}</span>
                     </a>
                 @endforeach
             </div>
@@ -147,8 +151,8 @@
                             <div class="flex items-center gap-2 font-(family-name:--font-display)">
                                 @foreach ($langs as $lang)
                                     <a href="?lang={{ strtolower($lang) }}"
-                                        class="text-black flex h-10 w-10 items-center justify-center rounded-full border border-(--color-line) transition-colors hover:bg-white hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-white text-(--color-text-button-secondary)' : '' }}">
-                                        {{ $lang }}
+                                        class="text-black grid h-10 w-10 place-items-center rounded-full border border-(--color-line) text-center leading-none transition-colors hover:bg-white hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-white text-(--color-text-button-secondary)' : '' }}">
+                                        <span style="line-height:1;display:block;">{{ $lang }}</span>
                                     </a>
                                 @endforeach
                             </div>
