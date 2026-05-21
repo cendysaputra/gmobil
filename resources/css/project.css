@@ -1,6 +1,7 @@
 /* Heading Uppercase */
 h1, h2 {
    text-transform: uppercase;
+   font-weight: 600;
 }
 
 

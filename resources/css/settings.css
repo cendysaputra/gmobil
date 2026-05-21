@@ -36,7 +36,7 @@
     /*h2*/
     --font-h2: var(--font-display);
     --weight-h2: var(--weight-bold);
-    --text-h2: 3rem;
+    --text-h2: 2.5rem;
     --text-h2-tablet: 2rem;
     --text-h2-mobile: 1.8rem;
     --leading-h2: var(--leading-tight);

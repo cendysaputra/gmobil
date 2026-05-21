@@ -28,12 +28,14 @@
                 class="w-full h-120 md:h-120 lg:h-130 object-cover mix-blend-multiply">
         </div>
 
-        <div id="content-footer" class="absolute inset-x-0 top-0 z-10">
-            <div class="container flex translate-y-[20%]">
-                <div id="image-footer">
-                    <img src="{{ $image_footer }}" alt="Footer Background" class="-mb-10 -mt-10">
+        <div id="content-footer" class="container absolute inset-x-0 top-0 z-10 h-120 md:h-120 lg:h-130">
+            <div class="container relative mx-auto flex h-full items-center">
+                <div id="image-footer" class="pointer-events-none absolute bottom-0 z-0">
+                    <img src="{{ $image_footer }}" alt="Footer Background" class="w-full object-contain">
                 </div>
-                <div id="cta-footer" class="w-[80%] flex flex-col justify-between gap-24">
+
+                <div id="cta-footer"
+                    class="relative z-10 ml-auto flex h-full w-full max-w-[56%] flex-col justify-center gap-16 pt-8">
                     <div id="cta-footer-top">
                         <h2 class="text-white">{{ $footer_title }}</h2>
                         <p class="text-white">{{ $footer_desc }}</p>
