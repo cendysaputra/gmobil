@@ -22,35 +22,48 @@
 @endphp
 
 <footer id="footer">
-    <div class="relative overflow-hidden rounded-t-[80px] bg-(--color-primary)">
+    <div class="relative overflow-hidden rounded-t-3xl lg:rounded-t-[60px] bg-(--color-primary)">
+
+        {{-- Background Footer --}}
         <div id="footer-background" class="overlay-footer">
             <img src="{{ $footer_background }}" alt="Footer Background"
-                class="w-full h-120 md:h-120 lg:h-130 object-cover mix-blend-multiply">
+                class="w-full h-195 md:h-120 lg:h-140 object-cover mix-blend-multiply">
         </div>
 
-        <div id="content-footer" class="container absolute inset-x-0 top-0 z-10 h-120 md:h-120 lg:h-130">
-            <div class="container relative mx-auto flex h-full items-center">
-                <div id="image-footer" class="pointer-events-none absolute bottom-0 z-0">
-                    <img src="{{ $image_footer }}" alt="Footer Background" class="w-full object-contain">
+        {{-- Content Footer --}}
+        <div id="content-footer" class="absolute inset-0 z-10 mt-4 lg:mt-15">
+            <div class="container flex flex-col-reverse gap-8 md:flex-row lg:flex-row ">
+
+                {{-- Image Footer --}}
+                <div id="image-footer">
+                    <img src="{{ $image_footer }}" alt="Footer Background" class="w-full">
                 </div>
 
-                <div id="cta-footer"
-                    class="relative z-10 ml-auto flex h-full w-full max-w-[56%] flex-col justify-center gap-16 pt-8">
-                    <div id="cta-footer-top">
-                        <h2 class="text-white">{{ $footer_title }}</h2>
-                        <p class="text-white">{{ $footer_desc }}</p>
-                        <div class="flex gap-10 mt-8 items-center">
-                            <div id="media-sosial" class="flex gap-8">
-                                @foreach ($socials as $social)
-                                    <a href="{{ $social['link'] }}" target="_blank" rel="noopener noreferrer"
-                                        title="{{ $social['name'] }}">
-                                        <span class="social-icon-white block w-6 h-6"
-                                            style="--icon-url: url('{{ $social['icon'] }}');"></span>
-                                    </a>
-                                @endforeach
+                {{-- CTA Footer --}}
+                <div id="cta-footer">
+                    <div class="flow mt-10 lg:-ml-20">
+                        <h2 class="text-white lg:w-160">{{ $footer_title }}</h2>
+                        <p class="text-white lg:w-120">{{ $footer_desc }}</p>
+
+                        {{-- Media Sosial --}}
+                        <div class="flex flex-col-reverse gap-6 items-start mt-4 lg:flex-row lg:items-center lg:mt-8">
+                            <div
+                                class="flex justify-between w-full border-t border-white/20 py-4 mt-2 md:border-white/0 md:py-0 md:mt-0 lg:border-white/0 lg:py-0 lg:mt-0 lg:w-min">
+                                <p class="uppercase text-white border-white md:hidden lg:hidden">Media
+                                    Sosial</p>
+                                <div class="flex gap-4">
+                                    @foreach ($socials as $social)
+                                        <a href="{{ $social['link'] }}" target="_blank" rel="noopener noreferrer"
+                                            title="{{ $social['name'] }}">
+                                            <span class="social-icon block w-5 h-5 social-icon-white"
+                                                style="--icon-url: url('{{ $social['icon'] }}');"></span>
+                                        </a>
+                                    @endforeach
+                                </div>
                             </div>
-                            <a id="button-footer" href="{{ $footer_button['btnLink'] }}"
-                                class="button gap-4 button--white">
+
+                            {{-- Button Konsultasi --}}
+                            <a href="{{ $footer_button['btnLink'] }}" class="button gap-4 button--white">
                                 <span>{{ $footer_button['btnText'] }}</span>
                                 <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
                                     <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1"
@@ -59,11 +72,12 @@
                             </a>
                         </div>
                     </div>
-                    <div id="footer-copyright"
-                        class="flex flex-col-reverse md:flex-row lg:flex-row items-center justify-between gap-4 py-8">
-                        <p class="text-white font-normal">© {{ date('Y') }} {{ $company_name }}</p>
-                    </div>
                 </div>
             </div>
+            {{-- Copyrigth Footer --}}
+            <div id="copyrigth-footer" class="container flex justify-center lg:justify-end">
+                <p class="text-white mt-4 lg:w-[55%] lg:-mt-14">© {{ date('Y') }} {{ $company_name }}</p>
+            </div>
         </div>
+    </div>
 </footer>

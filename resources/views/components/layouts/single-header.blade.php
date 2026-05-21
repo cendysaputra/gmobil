@@ -77,7 +77,7 @@
             </nav>
 
             <!-- Language Desktop -->
-            <div class="hidden lg:flex items-center gap-0.5 text-sm font-(family-name:--font-display)">
+            <div class="hidden lg:flex items-center gap-0.5 text-sm font-(family-name:--font-body)">
                 @foreach ($langs as $lang)
                     <a href="?lang={{ strtolower($lang) }}"
                         class="grid h-9 w-9 place-items-center rounded-full text-center leading-none transition-colors hover:bg-(--color-surface) hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-surface) text-(--color-text-button-secondary)' : 'text-black' }}">
@@ -171,7 +171,7 @@
                         <!-- Language Mobile -->
                         <div id="lang-flyout" class="flex items-center justify-between pb-6">
                             <span class="uppercase">Pilih Bahasa</span>
-                            <div class="flex items-center gap-2 font-(family-name:--font-display)">
+                            <div class="flex items-center gap-2 font-(family-name:--font-body)">
                                 @foreach ($langs as $lang)
                                     <a href="?lang={{ strtolower($lang) }}"
                                         class="text-black grid h-10 w-10 place-items-center rounded-full border border-(--color-line) text-center leading-none transition-colors hover:bg-(--color-secondary) hover:text-(--color-text-button-secondary) {{ strtolower($activeLang) === strtolower($lang) ? 'bg-(--color-secondary) text-(--color-text-button-secondary)' : '' }}">
