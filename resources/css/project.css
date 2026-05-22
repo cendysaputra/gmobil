@@ -27,6 +27,14 @@ h1, h2 {
 }
 
 
+/* Image Protection */
+.img-no-context {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+
 
 /* Hero Banner Overlay Home */
 .hero-banner-overlay {
@@ -36,6 +44,14 @@ h1, h2 {
         rgba(0, 0, 0, 0.7) 57.08%,
         rgba(0, 0, 0, 0.2) 100%
     );
+}
+
+
+
+/* Hero Banner Overlay Page */
+.heropage-overlay {
+   background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.66) 2.88%, rgba(0, 0, 0, 0.00) 57.69%);
 }
 
 

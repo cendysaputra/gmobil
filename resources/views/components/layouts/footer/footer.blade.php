@@ -27,7 +27,7 @@
         {{-- Background Footer --}}
         <div id="footer-background" class="overlay-footer">
             <img src="{{ $footer_background }}" alt="Footer Background"
-                class="w-full h-195 md:h-120 lg:h-140 object-cover mix-blend-multiply">
+                class="w-full h-195 md:h-120 lg:h-140 object-cover mix-blend-multiply pointer-events-none">
         </div>
 
         {{-- Content Footer --}}
@@ -36,8 +36,8 @@
 
                 <div class="flex flex-col-reverse md:flex-row lg:flex-row gap-6">
                     {{-- Image Footer --}}
-                    <div id="image-footer">
-                        <img src="{{ $image_footer }}" alt="Footer Background" class="w-full">
+                    <div id="image-footer" class="flex items-end">
+                        <img src="{{ $image_footer }}" alt="Footer Background" class="block w-full">
                     </div>
 
                     {{-- CTA Footer --}}
@@ -76,7 +76,7 @@
                         </div>
 
                         {{-- Copyrigth Footer Desktop --}}
-                        <div id="copyrigth-footer" class="hidden md:block lg:block my-6">
+                        <div id="copyrigth-footer" class="hidden my-6 md:mt-20 md:block lg:block">
                             <p class="text-white">© {{ date('Y') }} {{ $company_name }}</p>
                         </div>
                     </div>

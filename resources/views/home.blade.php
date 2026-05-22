@@ -1,7 +1,8 @@
 <x-layouts.main>
     <x-layouts.header.header />
     <main>
-        <x-layouts.slider />
+        <x-layouts.hero.heropage title="Tentang Kami" :image="asset('images/hero-tentang.jpg')" />
+        {{-- <x-layouts.hero.slider /> --}}
     </main>
-    <x-layouts.footer.cp-footer />
+    <x-layouts.footer.footer />
 </x-layouts.main>
