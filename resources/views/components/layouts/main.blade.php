@@ -1,3 +1,4 @@
+@props(['bodyClass' => ''])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -1518,7 +1519,7 @@
     @endif
 </head>
 
-<body>
+<body class="{{ $bodyClass }}">
     {{ $slot }}
 </body>
 

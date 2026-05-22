@@ -6,6 +6,13 @@ h1, h2 {
 
 
 
+/* Background Halaman */
+body.background-grey {
+   background-color: var(--color-surface);
+}
+
+
+
 /* Social Media Icons */
 .social-icon {
     background-color: var(--color-primary);
@@ -116,9 +123,8 @@ footer.grey-footer {
 
 
 /* ====== KONTAK PAGE ====== */
-.title-contact-info {
+.title-display {
    font-family: var(--font-display);
    font-size: var(--text-xl);
    font-weight: 600;
-   color: var(--color-primary);
 }

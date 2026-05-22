@@ -11,7 +11,7 @@ header {
 }
 
 footer {
-  background: var(--bg-footer);
+  background: none;
 }
 
 section, .section {

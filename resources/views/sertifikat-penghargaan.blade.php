@@ -1,7 +1,105 @@
-<x-layouts.main>
+@php
+    $certificate_title = 'Komitmen yang Teruji dan Diakui';
+    $certificate_desc =
+        'Berbagai penghargaan dan sertifikasi menjadi bukti komitmen GM Mobil dalam menjaga kualitas layanan, produk, dan kepuasan pelanggan di seluruh Indonesia';
+    $certificates = [
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
+    ];
+@endphp
+
+<x-layouts.main bodyClass="background-grey">
     <x-layouts.header.header />
+
     <main>
         <x-layouts.hero.heropage title="Sertifikat & Penghargaan" :image="asset('images/hero-sertifikat.jpg')" />
+
+        {{-- Halaman sertifikat --}}
+        <section id="sertification">
+            <div class="container my-18 md:my-18 lg:my-30">
+                <div class="flex flex-col gap-10 md:gap-10 lg:gap-30">
+
+                    {{-- Heading sertifikat --}}
+                    <div id="ceritificate-content" class="flow">
+                        <h2 class="text-left md:text-center lg:text-center">{{ $certificate_title }}</h2>
+                        <p class="text-left md:text-center lg:text-center">{{ $certificate_desc }}</p>
+                    </div>
+
+                    {{-- Galeri Sertifikat --}}
+                    <div id="certificate-gallery"
+                        class="grid grid-cols-2 gap-x-2 gap-y-8 md:grid-cols-4 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-20">
+                        @foreach ($certificates as $certificate)
+                            <div class="certificate-item">
+                                <img src="{{ $certificate['image'] }}" alt="{{ $certificate['name'] }}"
+                                    class="w-full h-auto object-cover rounded-md mb-4">
+                                <span
+                                    class="title-display font-semibold tracking-tighter text-xl">{{ $certificate['name'] }}</span>
+                                <p class="text-(--color-primary)">{{ $certificate['years'] }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
     <x-layouts.footer.footer />
 </x-layouts.main>

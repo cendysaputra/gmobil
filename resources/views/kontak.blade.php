@@ -74,7 +74,8 @@
                                     {{-- Nomor telepon --}}
                                     @if (isset($item['title_phone']))
                                         <div id="phone-number" class="flex flex-col gap-2">
-                                            <span class="title-contact-info">{{ $item['title_phone'] }}</span>
+                                            <span
+                                                class="title-display text-(--color-primary)">{{ $item['title_phone'] }}</span>
                                             <div class="flex flex-col gap-1">
 
                                                 <a href="tel:{{ preg_replace('/\s+/', '', $item['phone1']) }}"
@@ -94,7 +95,8 @@
                                     {{-- Email --}}
                                     @if (isset($item['title_email']))
                                         <div id="email" class="flex flex-col gap-2">
-                                            <span class="title-contact-info">{{ $item['title_email'] }}</span>
+                                            <span
+                                                class="title-display text-(--color-primary)">{{ $item['title_email'] }}</span>
                                             <div class="flex flex-col gap-1">
 
                                                 <a href="mailto:{{ $item['email1'] }}"
@@ -110,7 +112,8 @@
                                     @if (isset($item['title_address']))
                                         <div id="address-office" class="flex flex-col gap-2">
 
-                                            <span class="title-contact-info">{{ $item['title_address'] }}</span>
+                                            <span
+                                                class="title-display text-(--color-primary)">{{ $item['title_address'] }}</span>
                                             @if (!empty($item['address_url']))
                                                 <a href="{{ $item['address_url'] }}" target="_blank"
                                                     rel="noopener noreferrer"
@@ -127,7 +130,7 @@
 
                             {{-- Media sosial --}}
                             <div id="social-media" class="flex flex-col gap-4 border-t border-(--color-line) mt-6 pt-6">
-                                <span class="title-contact-info">Media Sosial</span>
+                                <span class="title-display text-(--color-primary)">Media Sosial</span>
                                 <div class="flex gap-6">
                                     @foreach ($socials as $social)
                                         <a href="{{ $social['link'] }}" target="_blank" rel="noopener noreferrer"
