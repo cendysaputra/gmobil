@@ -1,3 +1,7 @@
+@props([
+    'type' => null,
+])
+
 @php
     $company_name = 'PT Gaya Makmur Mobil';
     $menus = [
@@ -39,7 +43,8 @@
     ];
 @endphp
 
-<footer id="white-footer" class="relative z-10 -mt-8 rounded-t-2xl md:-mt-8 md:rounded-t-3xl lg:-mt-10 lg:rounded-t-4xl">
+<footer id="secondary-footer"
+    {{ $attributes->class([$type, 'relative z-10 rounded-t-2xl md:rounded-t-3xl lg:rounded-t-4xl']) }}>
     <div class="container">
         <div id="footer-menu-wrapper" class="overflow-x-auto border-b border-(--color-line)">
             <ul
