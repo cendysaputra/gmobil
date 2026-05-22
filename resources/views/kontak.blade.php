@@ -49,10 +49,10 @@
         {{-- Halaman kontak --}}
         <section id="kontak">
             <div class="container">
-                <div class="my-18 flex flex-col-reverse gap-18 lg:my-0 lg:mt-30 lg:flex-row lg:gap-8">
+                <div class="mt-18 flex flex-col-reverse gap-18 lg:my-0 lg:mt-30 lg:flex-row lg:gap-8">
 
                     {{-- Kontak form --}}
-                    <div id="form-contact" class="w-[70%]">
+                    <div id="form-contact" class="lg:w-[70%]">
                         <div id="header-form"
                             class="px-4 py-6 bg-(--color-surface) rounded-2xl flow lg:p-6 lg:rounded-3xl">
                             <h2 class="lg:w-180">{{ $form_title }}</h2>
@@ -63,7 +63,7 @@
                     </div>
 
                     {{-- Informasi kontak --}}
-                    <div id="contact-information" class="w-[40%]">
+                    <div id="contact-information" class="lg:w-[40%]">
 
                         {{-- Konten kontak --}}
                         <div class="flex flex-col gap-8">
