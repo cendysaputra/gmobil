@@ -41,11 +41,6 @@
                                     </summary>
 
                                     <ul class="mt-1 ml-2 flex flex-col gap-2">
-                                        <li>
-                                            <a href="{{ $menu['menu_link'] }}"
-                                                class="block text-sm text-black hover:text-(--color-primary) active:text-(--color-primary)">
-                                            </a>
-                                        </li>
                                         @foreach ($menu['children'] as $child)
                                             <li>
                                                 <a href="{{ $child['menu_link'] }}"

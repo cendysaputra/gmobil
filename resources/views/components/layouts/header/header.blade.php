@@ -10,8 +10,8 @@
         ['menu_text' => 'Beranda', 'menu_link' => '/'],
         [
             'menu_text' => 'Tentang',
-            'menu_link' => '/tentang',
             'children' => [
+                ['menu_text' => 'Tentang Kami', 'menu_link' => '/tentang-kami'],
                 ['menu_text' => 'Manajemen', 'menu_link' => '/manajemen'],
                 ['menu_text' => 'Sertifikat & Penghargaan', 'menu_link' => '/sertifikat-penghargaan'],
             ],
@@ -20,10 +20,11 @@
         ['menu_text' => 'Produk', 'menu_link' => '/produk'],
         [
             'menu_text' => 'Layanan',
-            'menu_link' => '/layanan',
             'children' => [
-                ['menu_text' => 'Layanan 1', 'menu_link' => '/layanan'],
-                ['menu_text' => 'Layanan 2', 'menu_link' => '/layanan'],
+                ['menu_text' => 'Industri', 'menu_link' => '/industri'],
+                ['menu_text' => 'Layanan Purna Jual', 'menu_link' => '/layanan-purna-jual'],
+                ['menu_text' => 'Reman Center', 'menu_link' => '/reman-center'],
+                ['menu_text' => 'GM Teletech', 'menu_link' => '/gm-teletech'],
             ],
         ],
         ['menu_text' => 'Berita dan Artikel', 'menu_link' => '/artikel'],
@@ -44,23 +45,27 @@
                 <ul class="flex items-center justify-center gap-16 font-(family-name:--font-body)">
                     @foreach ($menus as $menu)
                         <li class="group relative shrink-0">
-                            <a href="{{ $menu['menu_link'] }}"
-                                class="flex items-center gap-2 text-white hover:text-(--color-primary) active:text-(--color-primary)">
-                                <span>{{ $menu['menu_text'] }}</span>
-                                @if (!empty($menu['children']))
+                            @if (!empty($menu['children']))
+                                <div class="flex cursor-pointer items-center gap-2 font-medium text-white hover:text-(--color-primary)">
+                                    <span>{{ $menu['menu_text'] }}</span>
                                     <span
-                                        class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180">
+                                        class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180">
                                         <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" class="h-2.5 w-3">
                                             <path d="M1 1.25L6 6.25L11 1.25" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </span>
-                                @endif
-                            </a>
+                                </div>
+                            @else
+                                <a href="{{ $menu['menu_link'] }}"
+                                    class="flex items-center gap-2 font-medium text-white hover:text-(--color-primary) active:text-(--color-primary)">
+                                    <span>{{ $menu['menu_text'] }}</span>
+                                </a>
+                            @endif
 
                             @if (!empty($menu['children']))
                                 <ul
-                                    class="invisible absolute left-1/2 z-30 mt-8 min-w-56 -translate-x-1/2 rounded-2xl border border-(--color-line)/20 bg-white p-3 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                                    class="invisible absolute left-1/2 z-30 mt-8 min-w-56 -translate-x-1/2 rounded-2xl border border-(--color-line)/20 bg-white p-3 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
                                     @foreach ($menu['children'] as $child)
                                         <li>
                                             <a href="{{ $child['menu_link'] }}"
