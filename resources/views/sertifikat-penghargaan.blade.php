@@ -2,14 +2,15 @@
     $certificate_title = 'Komitmen yang Teruji dan Diakui';
     $certificate_desc =
         'Berbagai penghargaan dan sertifikasi menjadi bukti komitmen GM Mobil dalam menjaga kualitas layanan, produk, dan kepuasan pelanggan di seluruh Indonesia';
+    $placeholder = asset('images/placeholder.jpg');
     $certificates = [
         [
-            'image' => asset('images/placeholder.jpg'),
-            'name' => 'ISO XXXX:2015',
+            'image' => null,
+            'name' => 'ISO XXXX:2015X',
             'years' => '2025',
         ],
         [
-            'image' => asset('images/placeholder.jpg'),
+            'image' => null,
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
@@ -85,7 +86,7 @@
                         class="grid grid-cols-2 gap-x-2 gap-y-8 md:grid-cols-4 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-20">
                         @foreach ($certificates as $certificate)
                             <div class="certificate-item">
-                                <img src="{{ $certificate['image'] }}" alt="{{ $certificate['name'] }}"
+                                <img src="{{ $certificate['image'] ?: $placeholder }}" alt="{{ $certificate['name'] }}"
                                     class="w-full h-auto object-cover rounded-md mb-4">
                                 <span
                                     class="title-display font-semibold tracking-tighter text-xl">{{ $certificate['name'] }}</span>
