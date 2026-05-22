@@ -58,11 +58,6 @@
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
-        [
-            'image' => asset('images/placeholder.jpg'),
-            'name' => 'ISO XXXX:2015',
-            'years' => '2025',
-        ],
     ];
 @endphp
 
@@ -78,9 +73,11 @@
                 <div class="flex flex-col gap-10 md:gap-10 lg:gap-30">
 
                     {{-- Heading sertifikat --}}
-                    <div id="ceritificate-content" class="flow">
-                        <h2 class="text-left md:text-center lg:text-center">{{ $certificate_title }}</h2>
-                        <p class="text-left md:text-center lg:text-center">{{ $certificate_desc }}</p>
+                    <div id="ceritificate-content" class="flow flex flex-col items-left md:items-center lg:items-center">
+                        <h2 class="text-left w-[90%] md:text-center md:w-full lg:w-full lg:text-center">
+                            {{ $certificate_title }}
+                        </h2>
+                        <p class="text-left md:text-center lg:text-center lg:w-[45%]">{{ $certificate_desc }}</p>
                     </div>
 
                     {{-- Galeri Sertifikat --}}
