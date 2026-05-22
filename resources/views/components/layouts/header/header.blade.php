@@ -66,11 +66,11 @@
 
                             @if (!empty($menu['children']))
                                 <ul
-                                    class="invisible absolute left-1/2 z-30 mt-8 min-w-56 -translate-x-1/2 rounded-2xl border border-(--color-line)/20 bg-white p-3 opacity-0 shadow-[0_16px_40px_rgba(0,0,0,0.18)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                                    class="invisible absolute left-1/2 z-30 mt-8 min-w-56 -translate-x-1/2 rounded-2xl bg-white/50 backdrop-blur p-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
                                     @foreach ($menu['children'] as $child)
                                         <li>
                                             <a href="{{ $child['menu_link'] }}"
-                                                class="block px-1 py-1.5 text-black transition-colors hover:text-(--color-primary) text-sm">
+                                                class="block px-1 py-1.5 text-white transition-colors hover:text-(--color-primary) text-sm">
                                                 {{ $child['menu_text'] }}
                                             </a>
                                         </li>
