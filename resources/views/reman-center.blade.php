@@ -15,7 +15,7 @@
             <div class="container">
                 <div class="flex flex-col items-center my-18 gap-18 lg:my-30 lg:gap-30">
                     <p class="text-left md:text-center lg:text-center lg:w-240">{{ $reman_desc }}</p>
-                    <img src="{{ $reman_image }}" alt="REMAN Center" class="rounded-2xl">
+                    <img src="{{ $reman_image }}" alt="REMAN Center" class="rounded-2xl w-full lg:h-150 object-cover">
                 </div>
             </div>
         </section>
