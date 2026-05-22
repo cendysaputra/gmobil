@@ -3,5 +3,5 @@
     <main>
         <x-layouts.slider />
     </main>
-    <x-layouts.footer.footer />
+    <x-layouts.footer.cp-footer />
 </x-layouts.main>
