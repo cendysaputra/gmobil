@@ -32,7 +32,7 @@
 
         {{-- Content Footer --}}
         <div id="content-footer" class="absolute inset-0 z-10 mt-4 lg:mt-15">
-            <div class="container flex flex-col gap-8 md:flex-row lg:flex-row ">
+            <div class="container flex flex-col gap-8 justify-center md:flex-row lg:flex-row">
 
                 <div class="flex flex-col-reverse md:flex-row lg:flex-row gap-6">
                     {{-- Image Footer --}}
