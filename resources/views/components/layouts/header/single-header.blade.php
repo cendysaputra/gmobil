@@ -43,16 +43,30 @@
                     @foreach ($menus as $menu)
                         <li class="group relative shrink-0">
                             @if (!empty($menu['children']))
-                                <div class="flex cursor-pointer items-center gap-2 font-medium text-black hover:text-(--color-primary)">
-                                    <span>{{ $menu['menu_text'] }}</span>
-                                    <span
-                                        class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180">
-                                        <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" class="h-2.5 w-3">
-                                            <path d="M1 1.25L6 6.25L11 1.25" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </div>
+                                @if (!empty($menu['menu_link']))
+                                    <a href="{{ $menu['menu_link'] }}"
+                                        class="flex items-center gap-2 font-medium text-black hover:text-(--color-primary) active:text-(--color-primary)">
+                                        <span>{{ $menu['menu_text'] }}</span>
+                                        <span
+                                            class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180">
+                                            <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" class="h-2.5 w-3">
+                                                <path d="M1 1.25L6 6.25L11 1.25" stroke="currentColor" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                @else
+                                    <div class="flex cursor-pointer items-center gap-2 font-medium text-black hover:text-(--color-primary)">
+                                        <span>{{ $menu['menu_text'] }}</span>
+                                        <span
+                                            class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180">
+                                            <svg viewBox="0 0 12 8" fill="none" aria-hidden="true" class="h-2.5 w-3">
+                                                <path d="M1 1.25L6 6.25L11 1.25" stroke="currentColor" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                @endif
                             @else
                                 <a href="{{ $menu['menu_link'] }}"
                                     class="flex items-center gap-2 font-medium text-black hover:text-(--color-primary) active:text-(--color-primary)">

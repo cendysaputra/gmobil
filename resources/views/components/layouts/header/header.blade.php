@@ -46,7 +46,8 @@
                     @foreach ($menus as $menu)
                         <li class="group relative shrink-0">
                             @if (!empty($menu['children']))
-                                <div class="flex cursor-pointer items-center gap-2 font-medium text-white hover:text-(--color-primary)">
+                                <div
+                                    class="flex cursor-pointer items-center gap-2 font-medium text-white hover:text-(--color-primary)">
                                     <span>{{ $menu['menu_text'] }}</span>
                                     <span
                                         class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180">
