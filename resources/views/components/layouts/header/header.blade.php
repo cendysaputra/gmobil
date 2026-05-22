@@ -2,10 +2,6 @@
     $logo_url = asset('images/gm-logo.png');
     $langs = ['ID', 'EN'];
     $activeLang = request('lang', 'id');
-    $contact = [
-        'phone' => '1500-329',
-        'email' => 'gmmcare@gmmobil.com',
-    ];
     $menus = [
         ['menu_text' => 'Beranda', 'menu_link' => '/'],
         [

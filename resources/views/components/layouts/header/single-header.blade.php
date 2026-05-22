@@ -2,10 +2,6 @@
     $logo_url = asset('images/gm-logo.png');
     $langs = ['ID', 'EN'];
     $activeLang = request('lang', 'id');
-    $contact = [
-        'phone' => '1500-329',
-        'email' => 'gmmcare@gmmobil.com',
-    ];
     $menus = [
         ['menu_text' => 'Beranda', 'menu_link' => '/'],
         [
@@ -56,7 +52,8 @@
                                         </span>
                                     </a>
                                 @else
-                                    <div class="flex cursor-pointer items-center gap-2 font-medium text-black hover:text-(--color-primary)">
+                                    <div
+                                        class="flex cursor-pointer items-center gap-2 font-medium text-black hover:text-(--color-primary)">
                                         <span>{{ $menu['menu_text'] }}</span>
                                         <span
                                             class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180">

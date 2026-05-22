@@ -99,8 +99,7 @@ p {
 
 /* links */
 a {
-    font-family: var(--font-a);
-    font-weight: var(--weight-a);
+    font-family: var(--font-body);
     font-size: var(--text-a);
     line-height: var(--leading-a);
     letter-spacing: var(--tracking-a);

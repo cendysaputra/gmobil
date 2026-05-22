@@ -21,10 +21,19 @@ h1, h2 {
    transition: background-color 0.2s;
 }
 
+.social-icon-grey {
+   background-color: var(--color-text);
+   -webkit-mask: var(--icon-url) no-repeat center / contain;
+   mask: (var--icon-url) no-repeat center / contain;
+   transition: background-color 0.2s;
+}
+
 .social-icon:hover,
-.social-icon-white:hover {
+.social-icon-white:hover,
+.social-icon-grey:hover {
     background-color: var(--color-secondary);
 }
+
 
 
 /* Image Protection */
@@ -98,7 +107,18 @@ h1, h2 {
 }
 
 
+
 /* Footer */
 footer.grey-footer {
    background: var(--color-surface);
+}
+
+
+
+/* ====== KONTAK PAGE ====== */
+.title-contact-info {
+   font-family: var(--font-display);
+   font-size: var(--text-xl);
+   font-weight: 600;
+   color: var(--color-primary);
 }

@@ -1,3 +1,38 @@
+@php
+    $logo_url = asset('images/gm-logo.png');
+    $langs = ['ID', 'EN'];
+    $activeLang = request('lang', 'id');
+    $contact = [
+        'phone' => '1500-329',
+        'email' => 'gmmcare@gmmobil.com',
+    ];
+    $menus = [
+        ['menu_text' => 'Beranda', 'menu_link' => '/'],
+        [
+            'menu_text' => 'Tentang',
+            'children' => [
+                ['menu_text' => 'Tentang Kami', 'menu_link' => '/tentang-kami'],
+                ['menu_text' => 'Manajemen', 'menu_link' => '/manajemen'],
+                ['menu_text' => 'Sertifikat & Penghargaan', 'menu_link' => '/sertifikat-penghargaan'],
+            ],
+        ],
+        ['menu_text' => 'Dealer', 'menu_link' => '/dealer'],
+        ['menu_text' => 'Produk', 'menu_link' => '/produk'],
+        [
+            'menu_text' => 'Layanan',
+            'children' => [
+                ['menu_text' => 'Industri', 'menu_link' => '/industri'],
+                ['menu_text' => 'Layanan Purna Jual', 'menu_link' => '/layanan-purna-jual'],
+                ['menu_text' => 'Reman Center', 'menu_link' => '/reman-center'],
+                ['menu_text' => 'GM Teletech', 'menu_link' => '/gm-teletech'],
+            ],
+        ],
+        ['menu_text' => 'Berita dan Artikel', 'menu_link' => '/artikel'],
+        ['menu_text' => 'Karier', 'menu_link' => '/karier'],
+        ['menu_text' => 'Kontak', 'menu_link' => '/kontak'],
+    ];
+@endphp
+
 <nav>
     <!-- Mobile Flyout Menu -->
     <div id="mobile-menu"

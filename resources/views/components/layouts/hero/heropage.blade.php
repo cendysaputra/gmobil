@@ -3,7 +3,7 @@
 <section id="hero-page" class="overflow-hidden">
     <div class="relative {{ $height }}">
         <img src="{{ $image }}" alt="{{ $title }}"
-            class="absolute inset-0 h-full w-full pointer-events-none" />
+            class="absolute inset-0 h-full w-full pointer-events-none object-cover" />
 
         <div class="heropage-overlay absolute inset-0"></div>
 
