@@ -127,7 +127,6 @@ footer.grey-footer {
 /* Judul informasi kontak */
 .title-display {
    font-family: var(--font-display);
-   font-size: var(--text-xl);
    font-weight: 600;
 }
 

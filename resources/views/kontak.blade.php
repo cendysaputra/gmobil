@@ -75,7 +75,7 @@
                                     @if (isset($item['title_phone']))
                                         <div id="phone-number" class="flex flex-col gap-2">
                                             <span
-                                                class="title-display text-(--color-primary)">{{ $item['title_phone'] }}</span>
+                                                class="title-display text-xl text-(--color-primary)">{{ $item['title_phone'] }}</span>
                                             <div class="flex flex-col gap-1">
 
                                                 <a href="tel:{{ preg_replace('/\s+/', '', $item['phone1']) }}"

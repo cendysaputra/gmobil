@@ -7,39 +7,50 @@
     $fiturBenefit_items = [
         [
             'icon' => asset('images/fitur-benefit-1.svg'),
-            'judul' => 'Pemantauan Bahan Bakar',
+            'title' => 'Pemantauan Bahan Bakar',
             'desc' =>
                 'Pemberitahuan instan mengenai efisiensi penggunaan BBM, pemakaian BBM yang tidak normal, indikasi penyimpangan BBM.',
         ],
         [
             'icon' => asset('images/fitur-benefit-2.svg'),
-            'judul' => 'Utility Armada',
+            'title' => 'Utility Armada',
             'desc' =>
                 'Data mengenai penggunaan kendaraan, kendaraan mana yang produktif dan kendaraan yang dia (idle), perbandingan antara kendaraan yang berhenti dan kendaraan yang beroperasi.',
         ],
         [
             'icon' => asset('images/fitur-benefit-3.svg'),
-            'judul' => 'Data Real Time & Riwayat Perjalanan Kendaraan',
+            'title' => 'Data Real Time & Riwayat Perjalanan Kendaraan',
             'desc' =>
                 'Terintegrasi dengan google maps sehingga secara otomatis sistem akan terus mengupdate posisi & lokasi kendaraan. Membandingkan perencanaan perjalanan dengan riwayat perjalanan aktual untuk rencana kerja yang lebih baik.',
         ],
         [
             'icon' => asset('images/fitur-benefit-4.svg'),
-            'judul' => 'Perilaku Pengemudi',
+            'title' => 'Perilaku Pengemudi',
             'desc' =>
                 'Menganalisa perilaku pengemudi untuk keamanan, ketetapan dan efisiensi yang lebih baik. Data perilaku pengemudi seperti cara pengereman akselarasi, batas kecepatan, serta lama mesin idle.',
         ],
         [
             'icon' => asset('images/fitur-benefit-5.svg'),
-            'judul' => 'Perawatan Kendaraan',
+            'title' => 'Perawatan Kendaraan',
             'desc' =>
                 'Secara otomatis akan mendapatkan notifikasi untuk perawatan kendaraan berdasarkan odometer dan jam operasional kendaraan.',
         ],
         [
             'icon' => asset('images/fitur-benefit-6.svg'),
-            'judul' => 'Laporan & Evaluasi',
+            'title' => 'Laporan & Evaluasi',
             'desc' =>
                 'Laporan dan Evaluasi terkait dengan pengoperasian kendaraan untuk mengukur dan meningkatkan efisiensi dari operasional perusahaan.',
+        ],
+    ];
+    $imageCTA_fiturBenefit = asset('images/cta-gmteletch.jpg');
+    $titleCTA_fiturBenefit = 'Pantau Kapan pun & Dimana pun FAW Trucks Kalian Berada!';
+    $contactCTA_fiturBenefit = [
+        [
+            'icon' => asset('images/whatsapp-white.svg'),
+            'title' => 'Call & WA Center',
+            'name' => '62 000 0000 0000',
+            'phoneNumber' => '+62 000 0000 0000',
+            'whatsappURL' => '/kontak',
         ],
     ];
 @endphp
@@ -75,10 +86,45 @@
                                 <img src="{{ !empty($item['icon']) ? $item['icon'] : $fiturBenefit_iconplaceholder }}"
                                     alt="Icon" class="w-10 h-10">
                                 <div class="flow">
-                                    <h4 class="text-black">{{ $item['judul'] }}</h4>
+                                    <h4 class="text-black">{{ $item['title'] }}</h4>
                                     <p>{{ $item['desc'] }}</p>
                                 </div>
                             </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{-- Pemantauan trucks --}}
+        <section id="cta-gm-teletech">
+            <div class="container">
+                <div class="flex flex-col items-center gap-6 my-18 md:flex-row md:my-18 lg:flex-row lg:my-30">
+                    <img src="{{ $imageCTA_fiturBenefit }}" alt=" {{ $titleCTA_fiturBenefit }} "
+                        class="md:w-[40%] lg:w-[40%]">
+
+                    {{-- Konten CTA --}}
+                    <div class="flex flex-col gap-4">
+                        <h2 class="lg:w-180">{{ $titleCTA_fiturBenefit }}</h2>
+                        @foreach ($contactCTA_fiturBenefit as $contact)
+                            <a @if (!empty($contact['whatsappURL'])) href="{{ $contact['whatsappURL'] }}" target="_blank" @endif
+                                class="group bg-(--color-surface) hover:bg-(--color-secondary) flex justify-between items-center rounded-full p-3 pl-6 md:p-3 md:pl-6 lg:p-3 lg:pl-8 transition-colors">
+
+                                {{-- WhatsApp number --}}
+                                <div class="lg:flex lg:w-[90%] lg:items-center lg:justify-between">
+                                    <p class="font-medium group-hover:text-black transition-colors">
+                                        {{ $contact['title'] }}
+                                    </p>
+                                    <span
+                                        class="title-display group-hover:text-black -mb-1 transition-colors">{{ $contact['name'] }}
+                                </div>
+
+                                {{-- Icon WhatsApp --}}
+                                <div
+                                    class="bg-(--color-primary) group-hover:bg-black flex items-center justify-center rounded-full transition-colors w-12 h-12 md:w-12 md:h-12 lg:w-12 lg:h-12">
+                                    <img src="{{ $contact['icon'] }}" alt="{{ $contact['title'] }}" class="w-5 h-5">
+                                </div>
+                            </a>
                         @endforeach
                     </div>
                 </div>
