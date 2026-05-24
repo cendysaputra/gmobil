@@ -43,7 +43,7 @@
                         <li class="group relative shrink-0">
                             @if (!empty($menu['children']))
                                 <div
-                                    class="flex cursor-pointer items-center gap-2 font-medium text-white hover:text-(--color-primary)">
+                                    class="flex cursor-pointer items-center gap-2 font-medium text-white hover:text-(--color-secondary)">
                                     <span>{{ $menu['menu_text'] }}</span>
                                     <span
                                         class="flex h-2.5 w-2.5 items-center justify-center transition-transform duration-200 group-hover:rotate-180">
@@ -55,7 +55,7 @@
                                 </div>
                             @else
                                 <a href="{{ $menu['menu_link'] }}"
-                                    class="flex items-center gap-2 font-medium text-white hover:text-(--color-primary) active:text-(--color-primary)">
+                                    class="flex items-center gap-2 font-medium text-white hover:text-(--color-secondary) active:text-(--color-secondary)">
                                     <span>{{ $menu['menu_text'] }}</span>
                                 </a>
                             @endif
@@ -66,7 +66,7 @@
                                     @foreach ($menu['children'] as $child)
                                         <li>
                                             <a href="{{ $child['menu_link'] }}"
-                                                class="block px-1 py-1.5 text-white transition-colors hover:text-(--color-primary) text-sm">
+                                                class="block px-1 py-1.5 text-white transition-colors hover:text-(--color-secondary) text-sm">
                                                 {{ $child['menu_text'] }}
                                             </a>
                                         </li>

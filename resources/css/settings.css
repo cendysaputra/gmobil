@@ -47,9 +47,9 @@
     /*h3*/
     --font-h3: var(--font-display);
     --weight-h3: var(--weight-semibold);
-    --text-h3: var(--text-xl);
-    --text-h3-tablet: var(--text-lg);
-    --text-h3-mobile: var(--text-md);
+    --text-h3: 2.5rem;
+    --text-h3-tablet: 1.7rem;
+    --text-h3-mobile: 1.5rem;
     --leading-h3: var(--leading-snug);
     --tracking-h3: var(--tracking-tight);
     --transform-h3: none;

@@ -59,6 +59,11 @@
             'name' => 'ISO XXXX:2015',
             'years' => '2025',
         ],
+        [
+            'image' => asset('images/placeholder.jpg'),
+            'name' => 'ISO XXXX:2015',
+            'years' => '2025',
+        ],
     ];
 @endphp
 

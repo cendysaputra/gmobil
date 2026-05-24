@@ -123,8 +123,21 @@ footer.grey-footer {
 
 
 /* ====== KONTAK PAGE ====== */
+
+/* Judul informasi kontak */
 .title-display {
    font-family: var(--font-display);
    font-size: var(--text-xl);
    font-weight: 600;
+}
+
+
+
+/* ====== PURNA JUAL PAGE ====== */
+
+/* Reverse layout */
+@media (min-width: 1024px) {
+    .reverse-div > div:nth-child(2n+1) {
+        flex-direction: row-reverse !important;
+    }
 }
