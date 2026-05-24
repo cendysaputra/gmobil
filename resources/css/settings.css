@@ -27,7 +27,7 @@
     --weight-h1: var(--weight-semibold);
     --text-h1: 4rem;
     --text-h1-tablet: 2.5rem;
-    --text-h1-mobile: 2rem;
+    --text-h1-mobile: 2.3rem;
     --leading-h1: var(--leading-tight);
     --tracking-h1: var(--tracking-tightest);
     --transform-h1: none;
@@ -47,9 +47,9 @@
     /*h3*/
     --font-h3: var(--font-display);
     --weight-h3: var(--weight-semibold);
-    --text-h3: 2.5rem;
+    --text-h3: 2rem;
     --text-h3-tablet: 1.7rem;
-    --text-h3-mobile: 1.5rem;
+    --text-h3-mobile: 1.6rem;
     --leading-h3: var(--leading-snug);
     --tracking-h3: var(--tracking-tight);
     --transform-h3: none;
@@ -59,9 +59,9 @@
     /*h4*/
     --font-h4: var(--font-display);
     --weight-h4: var(--weight-semibold);
-    --text-h4: var(--text-lg);
-    --text-h4-tablet: var(--text-md);
-    --text-h4-mobile: var(--text-base);
+    --text-h4: 1.5rem;
+    --text-h4-tablet: 1.5rem;
+    --text-h4-mobile: 1.5rem;
     --leading-h4: var(--leading-snug);
     --tracking-h4: var(--tracking-normal);
     --transform-h4: none;
