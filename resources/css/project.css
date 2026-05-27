@@ -122,9 +122,7 @@ footer.grey-footer {
 
 
 
-/* ====== KONTAK PAGE ====== */
-
-/* Judul informasi kontak */
+/* Judul informasi - KONTAK PAGE */
 .title-display {
    font-family: var(--font-display);
    font-weight: 600;
@@ -132,9 +130,20 @@ footer.grey-footer {
 
 
 
-/* ====== PURNA JUAL PAGE ====== */
+/* Button filter active - DEALER MAPS */
+.dealer-cat-btn.active {
+    color: white !important;
+    background: var(--color-primary) !important;
+}
 
-/* Reverse layout */
+/* leaflet Watermark - DEALER MAPS */
+.leaflet-control-attribution {
+   display: none !important;
+}
+
+
+
+/* Reverse layout - PURNA JUAL PAGE */
 @media (min-width: 1024px) {
     .reverse-div > div:nth-child(2n+1) {
         flex-direction: row-reverse !important;
