@@ -1,3 +1,5 @@
+// Flyout untuk perangkat mobile dan tablet
+
 const setupFlyoutMenu = () => {
     const toggleButton = document.getElementById('menu-toggle');
     const closeButton = document.getElementById('mobile-menu-close');

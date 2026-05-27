@@ -1,3 +1,5 @@
+// Slider hero banner halaman Beranda
+
 const setupHeroSlider = () => {
     const SLIDE_TRANSITION_MS = 500;
     const AUTOPLAY_DELAY_MS = 5000;
