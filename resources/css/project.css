@@ -43,15 +43,6 @@ body.background-grey {
 
 
 
-/* Image Protection */
-.img-no-context {
-    -webkit-user-drag: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-}
-
-
-
 /* Hero Banner Overlay Home */
 .hero-banner-overlay {
     background: radial-gradient(
@@ -72,7 +63,7 @@ body.background-grey {
 
 
 
-/* Dot Slider Hero Banner*/
+/* Dot Slider Hero Banner */
 .hero-slider-dot {
     position: relative;
     overflow: hidden;
@@ -115,7 +106,7 @@ body.background-grey {
 
 
 
-/* Footer */
+/* Footer Background */
 footer.grey-footer {
    background: var(--color-surface);
 }
@@ -130,11 +121,22 @@ footer.grey-footer {
 
 
 
+/* Reverse layout - PURNA JUAL PAGE */
+@media (min-width: 1024px) {
+    .reverse-div > div:nth-child(2n+1) {
+        flex-direction: row-reverse !important;
+    }
+}
+
+
+
 /* Button filter active - DEALER MAPS */
 .dealer-cat-btn.active {
     color: white !important;
     background: var(--color-primary) !important;
 }
+
+
 
 /* leaflet Watermark - DEALER MAPS */
 .leaflet-control-attribution {
@@ -143,9 +145,117 @@ footer.grey-footer {
 
 
 
-/* Reverse layout - PURNA JUAL PAGE */
-@media (min-width: 1024px) {
-    .reverse-div > div:nth-child(2n+1) {
-        flex-direction: row-reverse !important;
-    }
+/* Layer toggle Peta/Satelit - DEALER MAPS */
+.leaflet-layer-toggle {
+    display: flex;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 16px;
+}
+
+.leaflet-layer-toggle .layer-btn {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+    font-weight: medium;
+    color: #aaa;
+    background: white;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.leaflet-layer-toggle .layer-btn + .layer-btn {
+    border-left: 1px solid #ddd;
+}
+
+.leaflet-layer-toggle .layer-btn.active {
+    color: #111;
+}
+
+
+
+/* Popup maps - DEALER MAPS */
+.leaflet-popup-close-button {
+   display: none;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+   background: var(--color-primary) !important;
+   box-shadow: none !important;
+}
+
+.leaflet-popup-content {
+   margin: 11px !important;
+   border-radius: 16px !important;
+}
+
+.dealer-popup {
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+}
+
+.popup-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   color: white;
+}
+
+.dealer-popup-city {
+   font-family: var(--font-display);
+   font-size: 1.3em;
+   font-weight: 600;
+}
+
+.dealer-popup-category {
+   font-family: var(--font-body);
+   text-transform: uppercase;
+}
+
+.wrap-popup-dealer {
+   padding: 12px;
+   background: white;
+   border-radius: 8px;
+   font-family: var(--font-body);
+}
+
+.dealer-popup-company {
+   font-weight: 600;
+   text-transform: uppercase;
+   margin-bottom: 8px;
+}
+
+.dealer-popup-address {
+   color: var(--color-text);
+   font-size: 0.9em;
+   margin-bottom: 8px;
+}
+
+.dealer-popup-contacts {
+   display: flex;
+   flex-direction: column;
+   gap: 4px;
+   margin: 12px 0 12px 0;
+}
+
+.dealer-popup-contacts a {
+   display: flex;
+   align-items: center;
+   gap: 6px;
+   color: var(--color-text) !important;
+}
+
+.dealer-contact-icon {
+   width: 12px;
+   height: 12px;
+   flex-shrink: 0;
+   color: var(--color-text);
+}
+
+.dealer-popup-gmaps {
+   color: var(--color-text) !important;
+   text-decoration: underline;
 }
