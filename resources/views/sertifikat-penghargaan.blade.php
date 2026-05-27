@@ -89,10 +89,12 @@
                     {{-- Galeri Sertifikat --}}
                     <div id="certificate-gallery"
                         class="grid grid-cols-2 gap-x-2 gap-y-8 md:grid-cols-4 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-20">
-                        @foreach ($certificates as $certificate)
+                        @foreach ($certificates as $index => $certificate)
                             <div class="certificate-item">
-                                <img src="{{ $certificate['image'] ?: $placeholder }}" alt="{{ $certificate['name'] }}"
-                                    class="w-full h-auto object-cover rounded-md mb-4">
+                                <a data-fslightbox="certificates" href="{{ $certificate['image'] ?: $placeholder }}">
+                                    <img src="{{ $certificate['image'] ?: $placeholder }}" alt="{{ $certificate['name'] }}"
+                                        class="w-full h-auto object-cover rounded-md mb-4">
+                                </a>
                                 <span
                                     class="title-display font-semibold tracking-tighter text-xl">{{ $certificate['name'] }}</span>
                                 <p class="text-(--color-primary)">{{ $certificate['years'] }}</p>
