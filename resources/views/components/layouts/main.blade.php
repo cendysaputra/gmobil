@@ -1520,7 +1520,9 @@
 </head>
 
 <body class="{{ $bodyClass }}">
+
     {{ $slot }}
+
 </body>
 
 </html>
