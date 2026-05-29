@@ -85,7 +85,7 @@
                                         <p
                                             class="mx-auto text-left md:text-center lg:text-center mt-2 md:mt-4 lg:mt-4 text-white">
                                             {{ $slide['desc'] }}</p>
-                                        <a href="{{ $slide['btnLink'] }}" class="button gap-4 button--secondary mt-8">
+                                        <a href="{{ $slide['btnLink'] }}" class="button gap-4 button--primary mt-8">
                                             <span>{{ $slide['btnText'] }}</span>
                                             <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" class="h-4 w-4">
                                                 <path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1"
